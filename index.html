@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebResto - Sites web pour restaurateurs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+        #menu-toggle:checked ~ #mobile-menu {
+            display: block;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-utensils text-indigo-600 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-indigo-600">WebResto</span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="#accueil" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Accueil</a>
+                        <a href="#services" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Services</a>
+                        <a href="#tarifs" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Tarifs</a>
+                        <a href="#contact" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <a href="#dashboard" class="bg-indigo-600 px-4 py-2 rounded-md text-white font-medium hover:bg-indigo-700 transition-all">Dashboard</a>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button id="menu-btn" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="sm:hidden hidden">
+            <div class="pt-2 pb-4 space-y-1">
+                <a href="#accueil" class="bg-indigo-50 border-indigo-500 text-indigo-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Accueil</a>
+                <a href="#services" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Services</a>
+                <a href="#tarifs" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Tarifs</a>
+                <a href="#contact" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Contact</a>
+                <a href="#dashboard" class="bg-indigo-600 text-white block px-4 py-2 rounded-md mx-3 my-2 font-medium">Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="gradient-bg py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
+                <div class="mb-12 lg:mb-0">
+                    <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+                        <span class="block">Boostez votre restaurant</span>
+                        <span class="block text-indigo-600">avec un site web professionnel</span>
+                    </h1>
+                    <p class="mt-3 text-xl text-gray-500 sm:mt-5">
+                        Attirez plus de clients, gérez les réservations en ligne et augmentez vos ventes avec une présence digitale optimisée.
+                    </p>
+                    
+                    <!-- Promotion Counter -->
+                    <div class="mt-6 bg-indigo-100 p-4 rounded-lg inline-block">
+                        <h3 class="text-lg font-medium text-indigo-800 mb-2">Promotion spéciale se termine dans :</h3>
+                        <div class="flex space-x-2" id="countdown">
+                            <div class="bg-white p-2 rounded shadow text-center">
+                                <span class="font-bold text-indigo-600 text-2xl" id="days">00</span>
+                                <span class="block text-xs text-gray-500">Jours</span>
+                            </div>
+                            <div class="bg-white p-2 rounded shadow text-center">
+                                <span class="font-bold text-indigo-600 text-2xl" id="hours">00</span>
+                                <span class="block text-xs text-gray-500">Heures</span>
+                            </div>
+                            <div class="bg-white p-2 rounded shadow text-center">
+                                <span class="font-bold text-indigo-600 text-2xl" id="minutes">00</span>
+                                <span class="block text-xs text-gray-500">Minutes</span>
+                            </div>
+                            <div class="bg-white p-2 rounded shadow text-center">
+                                <span class="font-bold text-indigo-600 text-2xl" id="seconds">00</span>
+                                <span class="block text-xs text-gray-500">Secondes</span>
+                            </div>
+                        </div>
+                        <p class="mt-2 text-sm text-indigo-700">Profitez de -20% sur tous nos plans cette semaine !</p>
+                    </div>
+                    <div class="mt-8 sm:flex sm:justify-start">
+                        <div class="rounded-md shadow">
+                            <a href="#contact" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                                Demander un devis
+                            </a>
+                        </div>
+                        <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
+                            <a href="#services" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
+                                Voir nos services
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img class="w-full rounded-lg shadow-xl ring-1 ring-black ring-opacity-5" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80" alt="Restaurant website showcase">
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg hidden lg:block">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                                <i class="fas fa-calendar-check text-white"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-gray-500">Réservations en ligne</p>
+                                <p class="text-lg font-semibold text-gray-900">+40% de réservations</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Nos services clés pour votre restaurant
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                    Tout ce dont vous avez besoin pour réussir en ligne
+                </p>
+            </div>
+
+            <div class="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="pt-6">
+                    <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full">
+                        <div class="-mt-6">
+                            <div>
+                                <span class="inline-flex items-center justify-center p-3 bg-indigo-500 rounded-md shadow-lg">
+                                    <i class="fas fa-laptop-code text-white text-2xl"></i>
+                                </span>
+                            </div>
+                            <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">Site web sur mesure</h3>
+                            <p class="mt-5 text-base text-gray-500">
+                                Design moderne et responsive adapté à votre établissement avec galerie photo, menu interactif et système de réservation intégré.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6">
+                    <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full">
+                        <div class="-mt-6">
+                            <div>
+                                <span class="inline-flex items-center justify-center p-3 bg-indigo-500 rounded-md shadow-lg">
+                                    <i class="fas fa-mobile-alt text-white text-2xl"></i>
+                                </span>
+                            </div>
+                            <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">Optimisé mobile</h3>
+                            <p class="mt-5 text-base text-gray-500">
+                                80% des recherches de restaurants se font sur mobile. Votre site sera parfaitement adapté à tous les appareils.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6">
+                    <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full">
+                        <div class="-mt-6">
+                            <div>
+                                <span class="inline-flex items-center justify-center p-3 bg-indigo-500 rounded-md shadow-lg">
+                                    <i class="fas fa-search text-white text-2xl"></i>
+                                </span>
+                            </div>
+                            <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">Référencement SEO</h3>
+                            <p class="mt-5 text-base text-gray-500">
+                                Optimisation pour Google My Business et les moteurs de recherche pour apparaître en tête des résultats locaux.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6">
+                    <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full">
+                        <div class="-mt-6">
+                            <div>
+                                <span class="inline-flex items-center justify-center p-3 bg-indigo-500 rounded-md shadow-lg">
+                                    <i class="fas fa-calendar-alt text-white text-2xl"></i>
+                                </span>
+                            </div>
+                            <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">Réservations en ligne</h3>
+                            <p class="mt-5 text-base text-gray-500">
+                                Système de réservation intégré avec notifications par email/SMS et synchronisation avec votre agenda.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6">
+                    <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full">
+                        <div class="-mt-6">
+                            <div>
+                                <span class="inline-flex items-center justify-center p-3 bg-indigo-500 rounded-md shadow-lg">
+                                    <i class="fas fa-chart-line text-white text-2xl"></i>
+                                </span>
+                            </div>
+                            <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">Analytics & Statistiques</h3>
+                            <p class="mt-5 text-base text-gray-500">
+                                Tableau de bord complet pour suivre vos réservations, visiteurs et performances avec données en temps réel.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6">
+                    <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full">
+                        <div class="-mt-6">
+                            <div>
+                                <span class="inline-flex items-center justify-center p-3 bg-indigo-500 rounded-md shadow-lg">
+                                    <i class="fas fa-headset text-white text-2xl"></i>
+                                </span>
+                            </div>
+                            <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">Support 7j/7</h3>
+                            <p class="mt-5 text-base text-gray-500">
+                                Assistance technique et conseils marketing pour maximiser votre présence en ligne. Mises à jour incluses.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="tarifs" class="gradient-bg py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Nos offres tarifaires
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-600 mx-auto">
+                    Des solutions adaptées à chaque type d'établissement
+                </p>
+            </div>
+
+            <div class="mt-16 space-y-8 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-8">
+                <div class="bg-white border-2 border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
+                    <div class="p-6">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">Starter</h3>
+                        <p class="mt-4 text-sm text-gray-500">Parfait pour les petits établissements</p>
+                        <div class="mt-8">
+                            <span class="text-4xl font-extrabold text-gray-900">€990</span>
+                            <span class="text-base font-medium text-gray-500">+ €29/mois</span>
+                        </div>
+                        <a href="#contact" class="mt-8 block w-full bg-gray-800 border border-gray-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900">Choisir cette offre</a>
+                    </div>
+                    <div class="pt-6 pb-8 px-6">
+                        <h4 class="sr-only">Inclus dans l'offre</h4>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-base text-gray-700">Site vitrine 5 pages</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-base text-gray-700">Design responsive</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-base text-gray-700">Formulaire de contact</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-base text-gray-700">Galerie photos</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white border-2 border-indigo-500 rounded-lg shadow-lg divide-y divide-gray-200 transform scale-105 z-10">
+                    <div class="p-6">
+                        <div class="flex justify-between">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">Business</h3>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">Populaire</span>
+                        </div>
+                        <p class="mt-4 text-sm text-gray-500">Solution complète pour restaurants</p>
+                        <div class="mt-8">
+                            <span class="text-4xl font-extrabold text-gray-900">€2,490</span>
+                            <span class="text-base font-medium text-gray-500">+ €49/mois</span>
+                        </div>
+                        <a href="#contact" class="mt-8 block w-full bg-indigo-600 border border-indigo-600 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-indigo-700">Choisir cette offre</a>
+                    </div>
+                    <div class="pt-6 pb-8 px-6">
+                        <h4 class="sr-only">Inclus dans l'offre</h4>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-base text-gray-700">Tout dans Starter</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-base text-gray-700">Système de réservation</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-base text-gray-700">Menu interactif</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-base text-gray-700">Optimisation SEO avancée</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-base text-gray-700">Tableau de bord analytics</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white border-2 border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
+                    <div class="p-6">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">Premium</h3>
+                        <p class="mt-4 text-sm text-gray-500">Pour les restaurants haut de gamme</p>
+                        <div class="mt-8">
+                            <span class="text-4xl font-extrabold text-gray-900">€4,990</span>
+                            <span class="text-base font-medium text-gray-500">+ €79/mois</span>
+                        </div>
+                        <a href="#contact" class="mt-8 block w-full bg-gray-800 border border-gray-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900">Choisir cette offre</a>
+                    </div>
+                    <div class="pt-6 pb-8 px-6">
+                        <h4 class="sr-only">Inclus dans l'offre</h4>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-base text-gray-700">Tout dans Business</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-base text-gray-700">Design ultra premium</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-base text-gray-700">Photographie professionnelle</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-base text-gray-700">E-commerce (commande en ligne)</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-base text-gray-700">Formation personnalisée</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Nos réalisations
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                    Découvrez des exemples de sites que nous avons créés pour nos clients
+                </p>
+            </div>
+
+            <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <!-- Portfolio Item 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transition-all hover:shadow-xl">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80" alt="Site du Bistrot Parisien" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900">Le Bistrot Parisien</h3>
+                        <p class="mt-2 text-gray-600">Site vitrine avec galerie photos et système de réservation</p>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transition-all hover:shadow-xl">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80" alt="Site de la Pizzeria Napoli" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900">Pizzeria Napoli</h3>
+                        <p class="mt-2 text-gray-600">Menu interactif avec commande en ligne</p>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transition-all hover:shadow-xl">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1558160074-4d7d8bdf4256?ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80" alt="Site de la Vinothèque Grand Cru" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900">Vinothèque Grand Cru</h3>
+                        <p class="mt-2 text-gray-600">Site e-commerce avec catalogue des vins</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="#contact" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700">
+                    Voir plus de réalisations
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Ils nous font confiance
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                    Découvrez ce que disent nos clients restaurateurs
+                </p>
+            </div>
+
+            <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <div class="bg-gray-50 p-8 rounded-lg">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <img class="h-12 w-12 rounded-full" src="https://randomuser.me/api/portraits/women/42.jpg" alt="Client testimonial">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-medium text-gray-900">Sophie Martin</h4>
+                            <p class="text-indigo-600">Le Petit Bistrot, Paris</p>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-gray-600">
+                        "Depuis notre nouveau site, nos réservations ont augmenté de 60%. Le système de réservation en ligne est un vrai plus pour notre équipe."
+                    </p>
+                    <div class="mt-4 flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-lg">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <img class="h-12 w-12 rounded-full" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client testimonial">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-medium text-gray-900">Antoine Dubois</h4>
+                            <p class="text-indigo-600">La Table Provençale, Lyon</p>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-gray-600">
+                        "Le tableau de bord est très intuitif. Je peux gérer toutes les réservations et voir les statistiques en un clin d'œil. Service client réactif et professionnel."
+                    </p>
+                    <div class="mt-4 flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-lg">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <img class="h-12 w-12 rounded-full" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client testimonial">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-medium text-gray-900">Élodie Lambert</h4>
+                            <p class="text-indigo-600">Chez Élodie, Marseille</p>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-gray-600">
+                        "Le menu interactif avec photos a vraiment boosté nos ventes à emporter. Les clients peuvent voir les plats avant de commander. Très satisfaite du résultat."
+                    </p>
+                    <div class="mt-4 flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-indigo-700">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+            <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+                <span class="block">Prêt à booster votre restaurant ?</span>
+                <span class="block text-indigo-200">Contactez-nous pour un devis personnalisé.</span>
+            </h2>
+            <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+                <div class="inline-flex rounded-md shadow">
+                    <a href="#contact" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50">
+                        Demander un devis
+                    </a>
+                </div>
+                <div class="ml-3 inline-flex rounded-md shadow">
+                    <a href="#contact" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 bg-opacity-60 hover:bg-opacity-70">
+                        Nous appeler
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-8">
+                <div class="mb-12 lg:mb-0">
+                    <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                        Contactez-nous
+                    </h2>
+                    <p class="mt-3 text-xl text-gray-500">
+                        Discutons de votre projet et trouvons la meilleure solution pour votre restaurant.
+                    </p>
+                    <div class="mt-8">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Adresse</h3>
+                                <p class="mt-1 text-base text-gray-500">123 Rue du Restaurant, 75000 Paris</p>
+                            </div>
+                        </div>
+                        <div class="mt-6 flex items-start">
+                            <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                                <i class="fas fa-phone-alt text-white"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Téléphone</h3>
+                                <p class="mt-1 text-base text-gray-500">+33 1 23 45 67 89</p>
+                            </div>
+                        </div>
+                        <div class="mt-6 flex items-start">
+                            <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Email</h3>
+                                <p class="mt-1 text-base text-gray-500">contact@webresto.fr</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700">Nom complet</label>
+                            <input type="text" id="name" name="name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                            <input type="email" id="email" name="email" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700">Téléphone</label>
+                            <input type="tel" id="phone" name="phone" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label for="restaurant" class="block text-sm font-medium text-gray-700">Nom de votre restaurant</label>
+                            <input type="text" id="restaurant" name="restaurant" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                            <textarea id="message" name="message" rows="4" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                Envoyer le message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Demo (hidden by default, shown when clicking Dashboard link) -->
+    <div id="dashboard-modal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+            </div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-6xl sm:w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="flex justify-between items-start">
+                        <h3 class="text-2xl leading-6 font-bold text-gray-900">Tableau de bord WebResto</h3>
+                        <button id="close-dashboard" class="text-gray-400 hover:text-gray-500">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-3">
+                        <!-- Stats Cards -->
+                        <div class="bg-white overflow-hidden shadow rounded-lg">
+                            <div class="px-4 py-5 sm:p-6">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                                        <i class="fas fa-calendar-check text-white"></i>
+                                    </div>
+                                    <div class="ml-5 w-0 flex-1">
+                                        <dl>
+                                            <dt class="text-sm font-medium text-gray-500 truncate">Réservations aujourd'hui</dt>
+                                            <dd class="flex items-baseline">
+                                                <div class="text-2xl font-semibold text-gray-900">24</div>
+                                                <div class="ml-2 flex items-baseline text-sm font-semibold text-green-600">
+                                                    <i class="fas fa-arrow-up text-xs"></i>
+                                                    <span class="sr-only">Increased by</span>
+                                                    12%
+                                                </div>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white overflow-hidden shadow rounded-lg">
+                            <div class="px-4 py-5 sm:p-6">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                                        <i class="fas fa-users text-white"></i>
+                                    </div>
+                                    <div class="ml-5 w-0 flex-1">
+                                        <dl>
+                                            <dt class="text-sm font-medium text-gray-500 truncate">Visiteurs ce mois</dt>
+                                            <dd class="flex items-baseline">
+                                                <div class="text-2xl font-semibold text-gray-900">1,248</div>
+                                                <div class="ml-2 flex items-baseline text-sm font-semibold text-green-600">
+                                                    <i class="fas fa-arrow-up text-xs"></i>
+                                                    <span class="sr-only">Increased by</span>
+                                                    24%
+                                                </div>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white overflow-hidden shadow rounded-lg">
+                            <div class="px-4 py-5 sm:p-6">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                                        <i class="fas fa-euro-sign text-white"></i>
+                                    </div>
+                                    <div class="ml-5 w-0 flex-1">
+                                        <dl>
+                                            <dt class="text-sm font-medium text-gray-500 truncate">Revenus en ligne</dt>
+                                            <dd class="flex items-baseline">
+                                                <div class="text-2xl font-semibold text-gray-900">€3,450</div>
+                                                <div class="ml-2 flex items-baseline text-sm font-semibold text-green-600">
+                                                    <i class="fas fa-arrow-up text-xs"></i>
+                                                    <span class="sr-only">Increased by</span>
+                                                    8%
+                                                </div>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reservations Table -->
+                    <div class="mt-8">
+                        <h4 class="text-lg font-medium text-gray-900 mb-4">Dernières réservations</h4>
+                        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nom</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Heure</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Personnes</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Statut</th>
+                                        <th scope="col" class="relative px-6 py-3"><span class="sr-only">Actions</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="flex-shrink-0 h-10 w-10">
+                                                    <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/women/12.jpg" alt="">
+                                                </div>
+                                                <div class="ml-4">
+                                                    <div class="text-sm font-medium text-gray-900">Marie Dupont</div>
+                                                    <div class="text-sm text-gray-500">marie.dupont@example.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">15/06/2023</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">19:30</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">4</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Confirmée</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Voir</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="flex-shrink-0 h-10 w-10">
+                                                    <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/men/43.jpg" alt="">
+                                                </div>
+                                                <div class="ml-4">
+                                                    <div class="text-sm font-medium text-gray-900">Jean Martin</div>
+                                                    <div class="text-sm text-gray-500">jean.martin@example.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">16/06/2023</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">20:00</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">2</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">En attente</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Voir</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="flex-shrink-0 h-10 w-10">
+                                                    <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/women/34.jpg" alt="">
+                                                </div>
+                                                <div class="ml-4">
+                                                    <div class="text-sm font-medium text-gray-900">Sophie Leroy</div>
+                                                    <div class="text-sm text-gray-500">sophie.leroy@example.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">17/06/2023</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">12:30</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">6</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Confirmée</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Voir</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Analytics Chart -->
+                    <div class="mt-8">
+                        <h4 class="text-lg font-medium text-gray-900 mb-4">Statistiques des réservations</h4>
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <canvas id="reservationsChart" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <button type="button" id="close-dashboard-btn" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:ml-3 sm:w-auto sm:text-sm">
+                        Fermer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white text-sm font-semibold tracking-wider uppercase">WebResto</h3>
+                    <p class="mt-4 text-gray-300 text-sm">
+                        Solutions web sur mesure pour les restaurateurs. Boostez votre activité avec une présence en ligne professionnelle.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-white text-sm font-semibold tracking-wider uppercase">Services</h3>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Sites web</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Réservations en ligne</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Menus digitaux</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">SEO local</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white text-sm font-semibold tracking-wider uppercase">Entreprise</h3>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">À propos</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Clients</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Carrières</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white text-sm font-semibold tracking-wider uppercase">Légal</h3>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Confidentialité</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">CGU</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Mentions légales</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-8 flex justify-between">
+                <p class="text-gray-400 text-sm">
+                    &copy; 2023 WebResto. Tous droits réservés.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Dashboard modal
+        const dashboardLinks = document.querySelectorAll('a[href="#dashboard"]');
+        const dashboardModal = document.getElementById('dashboard-modal');
+        const closeButtons = document.querySelectorAll('#close-dashboard, #close-dashboard-btn');
+
+        dashboardLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                dashboardModal.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
+                
+                // Initialize chart
+                initReservationsChart();
+            });
+        });
+
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                dashboardModal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if(this.getAttribute('href') === '#dashboard') return;
+                
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Reservations chart
+        function initReservationsChart() {
+            const ctx = document.getElementById('reservationsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sep', 'Oct', 'Nov', 'Déc'],
+                    datasets: [{
+                        label: 'Réservations mensuelles',
+                        data: [65, 59, 80, 81, 56, 55, 40, 72, 85, 91, 76, 89],
+                        backgroundColor: 'rgba(79, 70, 229, 0.05)',
+                        borderColor: 'rgba(79, 70, 229, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(79, 70, 229, 1)',
+                        pointRadius: 4,
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        // Countdown Timer
+        function updateCountdown() {
+            const endDate = new Date();
+            endDate.setDate(endDate.getDate() + 7); // 7 jours à partir de maintenant
+            
+            const now = new Date().getTime();
+            const distance = endDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                document.getElementById('countdown').innerHTML = '<span class="text-red-600 font-medium">La promotion est terminée !</span>';
+            }
+        }
+        
+        // Mettre à jour le compteur toutes les secondes
+        const countdownTimer = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Appel initial
+
+        // Form submission
+        const contactForm = document.querySelector('form');
+        if(contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Merci pour votre message ! Nous vous contacterons rapidement.');
+                this.reset();
+            });
+        }
+    </script>
+<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=Noam76/webresto" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
+</html>
