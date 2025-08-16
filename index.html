@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebResto - Accueil</title>
+    <title>WebResto - Solutions Digitales pour Restaurants</title>
+    <meta name="description" content="Transformez votre restaurant avec nos solutions digitales : site web, application mobile, commandes en ligne et plus encore.">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header">
@@ -15,48 +19,210 @@
             <ul class="nav-links">
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#services">Services</a></li>
+                <li><a href="#offres">Offres</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <main class="main">
-        <section class="hero">
+        <!-- Section Hero -->
+        <section id="accueil" class="hero">
             <div class="hero-content">
                 <h1>Votre Restaurant en Ligne</h1>
-                <p>Découvrez nos solutions digitales pour transformer votre restaurant</p>
-                <button class="cta-button" onclick="goToOffers()">
-                    Découvrir nos Offres
-                </button>
-                <button class="cta-button" onclick="openOffersModal()" style="margin-left: 1rem; background: #27ae60;">
-                    Voir les Tarifs
-                </button>
-            </div>
-        </section>
-
-        <section class="features">
-            <div class="container">
-                <h2>Pourquoi choisir WebResto ?</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">📱</div>
-                        <h3>Application Mobile</h3>
-                        <p>Une app native pour vos clients</p>
+                <p>Découvrez nos solutions digitales pour transformer votre restaurant et augmenter vos ventes</p>
+                <div class="hero-buttons">
+                    <button class="cta-button primary" onclick="openOffersModal()">
+                        Découvrir nos Offres
+                    </button>
+                    <button class="cta-button secondary" onclick="goToOffers()">
+                        Voir les Tarifs
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Restaurants Satisfaits</span>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🛒</div>
-                        <h3>Commande en Ligne</h3>
-                        <p>Système de commande intégré</p>
+                    <div class="stat-item">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Taux de Satisfaction</span>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📊</div>
-                        <h3>Analytics</h3>
-                        <p>Suivez vos performances</p>
+                    <div class="stat-item">
+                        <span class="stat-number">24h</span>
+                        <span class="stat-label">Support Client</span>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Section Services -->
+        <section id="services" class="features">
+            <div class="container">
+                <h2>Pourquoi choisir WebResto ?</h2>
+                <p class="section-subtitle">Nous offrons des solutions complètes pour digitaliser votre restaurant</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🌐</div>
+                        <h3>Site Web Responsive</h3>
+                        <p>Un site web moderne et adaptatif qui s'affiche parfaitement sur tous les appareils</p>
+                        <ul class="feature-details">
+                            <li>Design personnalisé</li>
+                            <li>Optimisé SEO</li>
+                            <li>Chargement rapide</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>Application Mobile</h3>
+                        <p>Une application native pour iOS et Android qui fidélise vos clients</p>
+                        <ul class="feature-details">
+                            <li>Interface intuitive</li>
+                            <li>Notifications push</li>
+                            <li>Programme de fidélité</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛒</div>
+                        <h3>Commande en Ligne</h3>
+                        <p>Système de commande intégré avec gestion des stocks en temps réel</p>
+                        <ul class="feature-details">
+                            <li>Paiement sécurisé</li>
+                            <li>Gestion des horaires</li>
+                            <li>Suivi des commandes</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Analytics Avancées</h3>
+                        <p>Suivez vos performances et prenez des décisions éclairées</p>
+                        <ul class="feature-details">
+                            <li>Rapports détaillés</li>
+                            <li>Prévisions de vente</li>
+                            <li>Analyse client</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📅</div>
+                        <h3>Réservations</h3>
+                        <p>Système de réservation en ligne pour optimiser votre planning</p>
+                        <ul class="feature-details">
+                            <li>Calendrier intelligent</li>
+                            <li>Confirmation automatique</li>
+                            <li>Gestion des tables</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💬</div>
+                        <h3>Support 24/7</h3>
+                        <p>Une équipe dédiée pour vous accompagner à chaque étape</p>
+                        <ul class="feature-details">
+                            <li>Chat en direct</li>
+                            <li>Formation personnalisée</li>
+                            <li>Maintenance préventive</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Témoignages -->
+        <section class="testimonials">
+            <div class="container">
+                <h2>Ce que disent nos clients</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"WebResto a transformé notre restaurant. Nos commandes en ligne ont augmenté de 300% en 6 mois !"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">👨‍🍳</div>
+                            <div class="author-info">
+                                <h4>Chef Michel</h4>
+                                <span>Le Petit Bistrot, Paris</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"L'application mobile est fantastique. Nos clients adorent commander depuis leur smartphone."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">👩‍💼</div>
+                            <div class="author-info">
+                                <h4>Marie Dubois</h4>
+                                <span>La Table Gourmet, Lyon</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"Support exceptionnel et site web magnifique. Je recommande WebResto à tous les restaurateurs !"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">👨‍💼</div>
+                            <div class="author-info">
+                                <h4>Pierre Martin</h4>
+                                <span>Le Coq Doré, Marseille</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section CTA -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Prêt à digitaliser votre restaurant ?</h2>
+                    <p>Rejoignez plus de 500 restaurants qui ont déjà transformé leur business avec WebResto</p>
+                    <button class="cta-button primary large" onclick="openOffersModal()">
+                        Commencer Maintenant
+                    </button>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🍽️ WebResto</h3>
+                    <p>Solutions digitales innovantes pour transformer votre restaurant et augmenter vos ventes.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Site Web</a></li>
+                        <li><a href="#services">Application Mobile</a></li>
+                        <li><a href="#services">Commandes en Ligne</a></li>
+                        <li><a href="#services">Analytics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#contact">Documentation</a></li>
+                        <li><a href="#contact">Formation</a></li>
+                        <li><a href="#contact">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>📧 contact@webresto.fr</p>
+                    <p>📞 01 23 45 67 89</p>
+                    <p>📍 Paris, France</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WebResto. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- Modal des Offres -->
     <div id="offersModal" class="modal">
@@ -64,21 +230,25 @@
             <span class="close" onclick="closeOffersModal()">&times;</span>
             <div class="offers-content">
                 <h2>Nos Offres WebResto</h2>
+                <p class="offers-subtitle">Choisissez le plan qui correspond à vos besoins</p>
                 <div class="pricing-grid">
                     <!-- Offre Starter -->
                     <div class="pricing-card">
                         <div class="pricing-header">
                             <h3>Starter</h3>
                             <div class="price">29€<span>/mois</span></div>
+                            <p class="price-description">Parfait pour commencer</p>
                         </div>
                         <ul class="features-list">
                             <li>✅ Site web responsive</li>
                             <li>✅ Menu digital</li>
                             <li>✅ Réservations en ligne</li>
+                            <li>✅ Support email</li>
                             <li>❌ Application mobile</li>
+                            <li>❌ Commandes en ligne</li>
                         </ul>
                         <div class="availability available">✅ Disponible</div>
-                        <button class="select-btn" onclick="selectPlan('Starter', 29)">Choisir</button>
+                        <button class="select-btn" onclick="selectPlan('Starter', 29)">Choisir ce Plan</button>
                     </div>
 
                     <!-- Offre Professional -->
@@ -87,15 +257,18 @@
                         <div class="pricing-header">
                             <h3>Professional</h3>
                             <div class="price">79€<span>/mois</span></div>
+                            <p class="price-description">Le plus choisi</p>
                         </div>
                         <ul class="features-list">
                             <li>✅ Tout du plan Starter</li>
                             <li>✅ Application mobile</li>
                             <li>✅ Commandes en ligne</li>
                             <li>✅ Paiement intégré</li>
+                            <li>✅ Analytics de base</li>
+                            <li>✅ Support prioritaire</li>
                         </ul>
                         <div class="availability limited">⚠️ 3 places restantes</div>
-                        <button class="select-btn" onclick="selectPlan('Professional', 79)">Choisir</button>
+                        <button class="select-btn" onclick="selectPlan('Professional', 79)">Choisir ce Plan</button>
                     </div>
 
                     <!-- Offre Enterprise -->
@@ -103,15 +276,18 @@
                         <div class="pricing-header">
                             <h3>Enterprise</h3>
                             <div class="price">199€<span>/mois</span></div>
+                            <p class="price-description">Pour les chaînes</p>
                         </div>
                         <ul class="features-list">
                             <li>✅ Tout du plan Professional</li>
                             <li>✅ Multi-restaurants</li>
                             <li>✅ Analytics avancées</li>
                             <li>✅ Support 24/7</li>
+                            <li>✅ API personnalisée</li>
+                            <li>✅ Formation dédiée</li>
                         </ul>
                         <div class="availability available">✅ Sur demande</div>
-                        <button class="select-btn" onclick="selectPlan('Enterprise', 199)">Choisir</button>
+                        <button class="select-btn" onclick="selectPlan('Enterprise', 199)">Choisir ce Plan</button>
                     </div>
                 </div>
             </div>
@@ -134,15 +310,15 @@
                 <form id="paymentForm">
                     <div class="form-group">
                         <label for="restaurantName">Nom du Restaurant *</label>
-                        <input type="text" id="restaurantName" required>
+                        <input type="text" id="restaurantName" required placeholder="Ex: Le Petit Bistrot">
                     </div>
                     <div class="form-group">
                         <label for="email">Email *</label>
-                        <input type="email" id="email" required>
+                        <input type="email" id="email" required placeholder="votre@email.com">
                     </div>
                     <div class="form-group">
                         <label for="phone">Téléphone *</label>
-                        <input type="tel" id="phone" required>
+                        <input type="tel" id="phone" required placeholder="01 23 45 67 89">
                     </div>
                     
                     <div class="form-group">
@@ -163,10 +339,15 @@
                     <button type="submit" class="pay-button">
                         Payer <span id="payAmount">79€</span>
                     </button>
+                    
+                    <p class="payment-note">
+                        🔒 Paiement sécurisé par SSL. Vos informations sont protégées.
+                    </p>
                 </form>
             </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

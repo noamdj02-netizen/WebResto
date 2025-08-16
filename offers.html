@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebResto - Nos Offres</title>
+    <title>Nos Offres - WebResto</title>
+    <meta name="description" content="Découvrez nos offres complètes pour digitaliser votre restaurant : Starter, Professional et Enterprise.">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header">
@@ -14,138 +18,424 @@
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Accueil</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="#offres">Offres</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="offers-main">
-        <section class="offers-hero">
-            <div class="container">
-                <h1>Choisissez votre Formule</h1>
-                <p>Des solutions adaptées à tous les types de restaurants</p>
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero offers-hero">
+            <div class="hero-content">
+                <h1>Nos Offres WebResto</h1>
+                <p>Choisissez le plan qui correspond parfaitement à vos besoins et à votre budget</p>
+                <div class="hero-buttons">
+                    <button class="cta-button primary" onclick="scrollToPricing()">
+                        Voir les Tarifs
+                    </button>
+                    <button class="cta-button secondary" onclick="openContactForm()">
+                        Nous Contacter
+                    </button>
+                </div>
             </div>
         </section>
 
-        <section class="pricing-section">
+        <!-- Section Avantages -->
+        <section class="benefits-section">
             <div class="container">
-                <div class="pricing-grid">
-                    <!-- Offre Starter -->
-                    <div class="pricing-card" data-plan="starter">
-                        <div class="pricing-header">
-                            <h3>Starter</h3>
-                            <div class="price">
-                                <span class="currency">€</span>
-                                <span class="amount">29</span>
-                                <span class="period">/mois</span>
-                            </div>
-                        </div>
-                        <div class="pricing-features">
-                            <ul>
-                                <li>✅ Site web responsive</li>
-                                <li>✅ Menu digital</li>
-                                <li>✅ Réservations en ligne</li>
-                                <li>✅ Support email</li>
-                                <li>❌ Application mobile</li>
-                                <li>❌ Commandes en ligne</li>
-                                <li>❌ Analytics avancées</li>
-                            </ul>
-                        </div>
-                        <div class="availability">
-                            <span class="status available">✅ Disponible immédiatement</span>
-                        </div>
-                        <button class="select-plan-btn" onclick="selectPlan('starter', 29)">
-                            Choisir cette offre
-                        </button>
+                <h2>Pourquoi choisir WebResto ?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🚀</div>
+                        <h3>Déploiement Rapide</h3>
+                        <p>Votre solution est opérationnelle en moins de 48h</p>
                     </div>
-
-                    <!-- Offre Professional -->
-                    <div class="pricing-card featured" data-plan="professional">
-                        <div class="featured-badge">Populaire</div>
-                        <div class="pricing-header">
-                            <h3>Professional</h3>
-                            <div class="price">
-                                <span class="currency">€</span>
-                                <span class="amount">79</span>
-                                <span class="period">/mois</span>
-                            </div>
-                        </div>
-                        <div class="pricing-features">
-                            <ul>
-                                <li>✅ Tout du plan Starter</li>
-                                <li>✅ Application mobile</li>
-                                <li>✅ Commandes en ligne</li>
-                                <li>✅ Paiement intégré</li>
-                                <li>✅ Analytics de base</li>
-                                <li>✅ Support prioritaire</li>
-                                <li>❌ Multi-restaurants</li>
-                            </ul>
-                        </div>
-                        <div class="availability">
-                            <span class="status limited">⚠️ 3 places restantes ce mois</span>
-                        </div>
-                        <button class="select-plan-btn" onclick="selectPlan('professional', 79)">
-                            Choisir cette offre
-                        </button>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💰</div>
+                        <h3>ROI Garanti</h3>
+                        <p>Augmentez vos ventes de 200% en moyenne</p>
                     </div>
-
-                    <!-- Offre Enterprise -->
-                    <div class="pricing-card" data-plan="enterprise">
-                        <div class="pricing-header">
-                            <h3>Enterprise</h3>
-                            <div class="price">
-                                <span class="currency">€</span>
-                                <span class="amount">199</span>
-                                <span class="period">/mois</span>
-                            </div>
-                        </div>
-                        <div class="pricing-features">
-                            <ul>
-                                <li>✅ Tout du plan Professional</li>
-                                <li>✅ Multi-restaurants</li>
-                                <li>✅ Analytics avancées</li>
-                                <li>✅ API personnalisée</li>
-                                <li>✅ Support 24/7</li>
-                                <li>✅ Formation incluse</li>
-                                <li>✅ Intégrations tierces</li>
-                            </ul>
-                        </div>
-                        <div class="availability">
-                            <span class="status available">✅ Disponible sur demande</span>
-                        </div>
-                        <button class="select-plan-btn" onclick="selectPlan('enterprise', 199)">
-                            Choisir cette offre
-                        </button>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🔒</div>
+                        <h3>Sécurité Totale</h3>
+                        <p>Certification SSL et conformité RGPD</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">📱</div>
+                        <h3>Multi-Plateforme</h3>
+                        <p>Compatible iOS, Android et Web</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="detailed-features">
+        <!-- Section Tarifs -->
+        <section id="offres" class="pricing-section">
             <div class="container">
-                <h2>Fonctionnalités Détaillées</h2>
-                <div class="features-comparison">
-                    <div class="feature-detail">
-                        <h4>🌐 Site Web Responsive</h4>
-                        <p>Un site web moderne qui s'adapte à tous les écrans. Optimisé pour mobile, tablette et desktop avec un design professionnel.</p>
+                <h2>Nos Plans et Tarifs</h2>
+                <p class="section-subtitle">Des solutions adaptées à tous les budgets et besoins</p>
+                
+                <!-- Toggle Annuel/Mensuel -->
+                <div class="billing-toggle">
+                    <span>Facturation mensuelle</span>
+                    <label class="switch">
+                        <input type="checkbox" id="billingToggle" onchange="toggleBilling()">
+                        <span class="slider round"></span>
+                    </label>
+                    <span>Facturation annuelle <span class="discount">-20%</span></span>
+                </div>
+
+                <div class="pricing-grid detailed">
+                    <!-- Plan Starter -->
+                    <div class="pricing-card starter">
+                        <div class="pricing-header">
+                            <h3>Starter</h3>
+                            <div class="price">
+                                <span class="monthly-price">29€</span>
+                                <span class="yearly-price" style="display: none;">23€</span>
+                                <span>/mois</span>
+                            </div>
+                            <p class="price-description">Parfait pour commencer</p>
+                        </div>
+                        
+                        <div class="pricing-features">
+                            <h4>Ce qui est inclus :</h4>
+                            <ul class="features-list">
+                                <li>✅ Site web responsive personnalisé</li>
+                                <li>✅ Menu digital avec photos</li>
+                                <li>✅ Système de réservations</li>
+                                <li>✅ Gestion des horaires</li>
+                                <li>✅ Support email</li>
+                                <li>✅ Formation de base</li>
+                                <li>❌ Application mobile</li>
+                                <li>❌ Commandes en ligne</li>
+                                <li>❌ Paiement intégré</li>
+                            </ul>
+                        </div>
+
+                        <div class="pricing-cta">
+                            <div class="availability available">✅ Disponible immédiatement</div>
+                            <button class="select-btn starter" onclick="selectPlan('Starter', 29)">
+                                Choisir ce Plan
+                            </button>
+                            <p class="setup-info">Installation gratuite</p>
+                        </div>
                     </div>
-                    <div class="feature-detail">
-                        <h4>📱 Application Mobile</h4>
-                        <p>Application native iOS et Android pour vos clients. Notifications push, géolocalisation et expérience utilisateur optimisée.</p>
+
+                    <!-- Plan Professional -->
+                    <div class="pricing-card featured professional">
+                        <div class="popular-badge">Populaire</div>
+                        <div class="pricing-header">
+                            <h3>Professional</h3>
+                            <div class="price">
+                                <span class="monthly-price">79€</span>
+                                <span class="yearly-price" style="display: none;">63€</span>
+                                <span>/mois</span>
+                            </div>
+                            <p class="price-description">Le plus choisi par nos clients</p>
+                        </div>
+                        
+                        <div class="pricing-features">
+                            <h4>Ce qui est inclus :</h4>
+                            <ul class="features-list">
+                                <li>✅ Tout du plan Starter</li>
+                                <li>✅ Application mobile native</li>
+                                <li>✅ Système de commandes en ligne</li>
+                                <li>✅ Paiement sécurisé intégré</li>
+                                <li>✅ Gestion des stocks</li>
+                                <li>✅ Analytics de base</li>
+                                <li>✅ Support prioritaire</li>
+                                <li>✅ Formation complète</li>
+                                <li>✅ Maintenance incluse</li>
+                            </ul>
+                        </div>
+
+                        <div class="pricing-cta">
+                            <div class="availability limited">⚠️ 3 places restantes</div>
+                            <button class="select-btn professional" onclick="selectPlan('Professional', 79)">
+                                Choisir ce Plan
+                            </button>
+                            <p class="setup-info">Installation gratuite + 1 mois offert</p>
+                        </div>
                     </div>
-                    <div class="feature-detail">
-                        <h4>🛒 Commandes en Ligne</h4>
-                        <p>Système complet de commande avec panier, personnalisation des plats et suivi en temps réel.</p>
+
+                    <!-- Plan Enterprise -->
+                    <div class="pricing-card enterprise">
+                        <div class="pricing-header">
+                            <h3>Enterprise</h3>
+                            <div class="price">
+                                <span class="monthly-price">199€</span>
+                                <span class="yearly-price" style="display: none;">159€</span>
+                                <span>/mois</span>
+                            </div>
+                            <p class="price-description">Pour les chaînes et groupes</p>
+                        </div>
+                        
+                        <div class="pricing-features">
+                            <h4>Ce qui est inclus :</h4>
+                            <ul class="features-list">
+                                <li>✅ Tout du plan Professional</li>
+                                <li>✅ Gestion multi-restaurants</li>
+                                <li>✅ Analytics avancées</li>
+                                <li>✅ API personnalisée</li>
+                                <li>✅ Support 24/7</li>
+                                <li>✅ Formation dédiée</li>
+                                <li>✅ Intégrations tierces</li>
+                                <li>✅ SLA garanti</li>
+                                <li>✅ Gestionnaire de compte dédié</li>
+                            </ul>
+                        </div>
+
+                        <div class="pricing-cta">
+                            <div class="availability available">✅ Sur demande</div>
+                            <button class="select-btn enterprise" onclick="selectPlan('Enterprise', 199)">
+                                Contacter l'Équipe
+                            </button>
+                            <p class="setup-info">Installation gratuite + 2 mois offerts</p>
+                        </div>
                     </div>
-                    <div class="feature-detail">
-                        <h4>💳 Paiement Sécurisé</h4>
-                        <p>Intégration Stripe pour des paiements sécurisés. Cartes bancaires, Apple Pay, Google Pay supportés.</p>
+                </div>
+
+                <!-- Comparaison des plans -->
+                <div class="comparison-section">
+                    <h3>Comparaison détaillée des plans</h3>
+                    <div class="comparison-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Fonctionnalités</th>
+                                    <th>Starter</th>
+                                    <th>Professional</th>
+                                    <th>Enterprise</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Site web responsive</td>
+                                    <td>✅</td>
+                                    <td>✅</td>
+                                    <td>✅</td>
+                                </tr>
+                                <tr>
+                                    <td>Application mobile</td>
+                                    <td>❌</td>
+                                    <td>✅</td>
+                                    <td>✅</td>
+                                </tr>
+                                <tr>
+                                    <td>Commandes en ligne</td>
+                                    <td>❌</td>
+                                    <td>✅</td>
+                                    <td>✅</td>
+                                </tr>
+                                <tr>
+                                    <td>Paiement intégré</td>
+                                    <td>❌</td>
+                                    <td>✅</td>
+                                    <td>✅</td>
+                                </tr>
+                                <tr>
+                                    <td>Analytics</td>
+                                    <td>❌</td>
+                                    <td>Basique</td>
+                                    <td>Avancées</td>
+                                </tr>
+                                <tr>
+                                    <td>Support</td>
+                                    <td>Email</td>
+                                    <td>Prioritaire</td>
+                                    <td>24/7</td>
+                                </tr>
+                                <tr>
+                                    <td>Multi-restaurants</td>
+                                    <td>❌</td>
+                                    <td>❌</td>
+                                    <td>✅</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section FAQ -->
+        <section class="faq-section">
+            <div class="container">
+                <h2>Questions Fréquentes</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Combien de temps faut-il pour mettre en place WebResto ?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>La mise en place prend généralement 24-48h pour les plans Starter et Professional. Pour le plan Enterprise, comptez 1-2 semaines selon la complexité de vos besoins.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Puis-je changer de plan plus tard ?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Oui, vous pouvez changer de plan à tout moment. La migration se fait sans interruption de service et les données sont conservées.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Y a-t-il des frais cachés ?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Non, nos tarifs sont transparents. Le prix affiché inclut tout : hébergement, maintenance, mises à jour et support. Seuls les paiements par carte bancaire peuvent engendrer des frais de transaction.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Proposez-vous un essai gratuit ?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Oui ! Nous offrons un essai gratuit de 14 jours pour tous nos plans. Vous pouvez tester toutes les fonctionnalités sans engagement.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section CTA -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Prêt à transformer votre restaurant ?</h2>
+                    <p>Rejoignez plus de 500 restaurants qui ont déjà augmenté leurs ventes avec WebResto</p>
+                    <div class="cta-buttons">
+                        <button class="cta-button primary large" onclick="openOffersModal()">
+                            Commencer Maintenant
+                        </button>
+                        <button class="cta-button secondary" onclick="openContactForm()">
+                            Parler à un Expert
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🍽️ WebResto</h3>
+                    <p>Solutions digitales innovantes pour transformer votre restaurant et augmenter vos ventes.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="index.html#services">Site Web</a></li>
+                        <li><a href="index.html#services">Application Mobile</a></li>
+                        <li><a href="index.html#services">Commandes en Ligne</a></li>
+                        <li><a href="index.html#services">Analytics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Formation</a></li>
+                        <li><a href="#contact">Documentation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>📧 contact@webresto.fr</p>
+                    <p>📞 01 23 45 67 89</p>
+                    <p>📍 Paris, France</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WebResto. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal des Offres -->
+    <div id="offersModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOffersModal()">&times;</span>
+            <div class="offers-content">
+                <h2>Nos Offres WebResto</h2>
+                <p class="offers-subtitle">Choisissez le plan qui correspond à vos besoins</p>
+                <div class="pricing-grid">
+                    <!-- Offre Starter -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Starter</h3>
+                            <div class="price">29€<span>/mois</span></div>
+                            <p class="price-description">Parfait pour commencer</p>
+                        </div>
+                        <ul class="features-list">
+                            <li>✅ Site web responsive</li>
+                            <li>✅ Menu digital</li>
+                            <li>✅ Réservations en ligne</li>
+                            <li>✅ Support email</li>
+                            <li>❌ Application mobile</li>
+                            <li>❌ Commandes en ligne</li>
+                        </ul>
+                        <div class="availability available">✅ Disponible</div>
+                        <button class="select-btn" onclick="selectPlan('Starter', 29)">Choisir ce Plan</button>
+                    </div>
+
+                    <!-- Offre Professional -->
+                    <div class="pricing-card featured">
+                        <div class="popular-badge">Populaire</div>
+                        <div class="pricing-header">
+                            <h3>Professional</h3>
+                            <div class="price">79€<span>/mois</span></div>
+                            <p class="price-description">Le plus choisi</p>
+                        </div>
+                        <ul class="features-list">
+                            <li>✅ Tout du plan Starter</li>
+                            <li>✅ Application mobile</li>
+                            <li>✅ Commandes en ligne</li>
+                            <li>✅ Paiement intégré</li>
+                            <li>✅ Analytics de base</li>
+                            <li>✅ Support prioritaire</li>
+                        </ul>
+                        <div class="availability limited">⚠️ 3 places restantes</div>
+                        <button class="select-btn" onclick="selectPlan('Professional', 79)">Choisir ce Plan</button>
+                    </div>
+
+                    <!-- Offre Enterprise -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Enterprise</h3>
+                            <div class="price">199€<span>/mois</span></div>
+                            <p class="price-description">Pour les chaînes</p>
+                        </div>
+                        <ul class="features-list">
+                            <li>✅ Tout du plan Professional</li>
+                            <li>✅ Multi-restaurants</li>
+                            <li>✅ Analytics avancées</li>
+                            <li>✅ Support 24/7</li>
+                            <li>✅ API personnalisée</li>
+                            <li>✅ Formation dédiée</li>
+                        </ul>
+                        <div class="availability available">✅ Sur demande</div>
+                        <button class="select-btn" onclick="selectPlan('Enterprise', 199)">Choisir ce Plan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal de Paiement -->
     <div id="paymentModal" class="modal">
@@ -154,75 +444,211 @@
             <div class="payment-form">
                 <h2>Finaliser votre Commande</h2>
                 <div class="order-summary">
-                    <h3>Récapitulatif</h3>
                     <div class="selected-plan">
                         <span id="selectedPlanName">Plan Professional</span>
                         <span id="selectedPlanPrice">79€/mois</span>
                     </div>
                 </div>
                 
-                <form id="paymentForm" class="payment-details">
-                    <h3>Informations de Facturation</h3>
+                <form id="paymentForm">
                     <div class="form-group">
-                        <label for="companyName">Nom du Restaurant *</label>
-                        <input type="text" id="companyName" required>
+                        <label for="restaurantName">Nom du Restaurant *</label>
+                        <input type="text" id="restaurantName" required placeholder="Ex: Le Petit Bistrot">
                     </div>
                     <div class="form-group">
                         <label for="email">Email *</label>
-                        <input type="email" id="email" required>
+                        <input type="email" id="email" required placeholder="votre@email.com">
                     </div>
                     <div class="form-group">
                         <label for="phone">Téléphone *</label>
-                        <input type="tel" id="phone" required>
+                        <input type="tel" id="phone" required placeholder="01 23 45 67 89">
                     </div>
+                    
                     <div class="form-group">
-                        <label for="address">Adresse</label>
-                        <input type="text" id="address">
+                        <label for="cardNumber">Numéro de carte *</label>
+                        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
                     </div>
-                    
-                    <h3>Informations de Paiement</h3>
-                    <div class="payment-methods">
-                        <div class="payment-method active" data-method="card">
-                            <span>💳 Carte Bancaire</span>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiryDate">Expiration *</label>
+                            <input type="text" id="expiryDate" placeholder="MM/AA" required>
                         </div>
-                        <div class="payment-method" data-method="paypal">
-                            <span>🅿️ PayPal</span>
+                        <div class="form-group">
+                            <label for="cvv">CVV *</label>
+                            <input type="text" id="cvv" placeholder="123" required>
                         </div>
-                    </div>
-                    
-                    <div id="cardPayment" class="payment-section">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="cardNumber">Numéro de carte *</label>
-                                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="expiryDate">Date d'expiration *</label>
-                                <input type="text" id="expiryDate" placeholder="MM/AA" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="cvv">CVV *</label>
-                                <input type="text" id="cvv" placeholder="123" required>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group checkbox-group">
-                        <input type="checkbox" id="terms" required>
-                        <label for="terms">J'accepte les <a href="#" target="_blank">conditions d'utilisation</a> et la <a href="#" target="_blank">politique de confidentialité</a></label>
                     </div>
                     
                     <button type="submit" class="pay-button">
-                        <span class="pay-text">Payer maintenant</span>
-                        <span class="pay-amount" id="payAmount">79€</span>
+                        Payer <span id="payAmount">79€</span>
                     </button>
+                    
+                    <p class="payment-note">
+                        🔒 Paiement sécurisé par SSL. Vos informations sont protégées.
+                    </p>
                 </form>
             </div>
         </div>
     </div>
 
     <script src="script.js"></script>
+    <script>
+        // Variables globales
+        let selectedPlan = null;
+        let selectedPrice = 0;
+        let isYearlyBilling = false;
+
+        // Initialisation au chargement de la page
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page des offres WebResto initialisée');
+            initializeOffersPage();
+        });
+
+        // Initialisation de la page des offres
+        function initializeOffersPage() {
+            setupFAQ();
+            setupBillingToggle();
+        }
+
+        // Toggle de la facturation annuelle/mensuelle
+        function toggleBilling() {
+            const toggle = document.getElementById('billingToggle');
+            isYearlyBilling = toggle.checked;
+            
+            const monthlyPrices = document.querySelectorAll('.monthly-price');
+            const yearlyPrices = document.querySelectorAll('.yearly-price');
+            
+            if (isYearlyBilling) {
+                monthlyPrices.forEach(price => price.style.display = 'none');
+                yearlyPrices.forEach(price => price.style.display = 'inline');
+            } else {
+                monthlyPrices.forEach(price => price.style.display = 'inline');
+                yearlyPrices.forEach(price => price.style.display = 'none');
+            }
+        }
+
+        // Configuration de la FAQ
+        function setupFAQ() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                const toggle = item.querySelector('.faq-toggle');
+                
+                // Fermer toutes les réponses au début
+                answer.style.display = 'none';
+            });
+        }
+
+        // Toggle de la FAQ
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const answer = faqItem.querySelector('.faq-answer');
+            const toggle = faqItem.querySelector('.faq-toggle');
+            
+            if (answer.style.display === 'none' || answer.style.display === '') {
+                // Fermer toutes les autres réponses
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    ans.style.display = 'none';
+                });
+                document.querySelectorAll('.faq-toggle').forEach(tog => {
+                    tog.textContent = '+';
+                });
+                
+                // Ouvrir la réponse actuelle
+                answer.style.display = 'block';
+                toggle.textContent = '−';
+            } else {
+                // Fermer la réponse actuelle
+                answer.style.display = 'none';
+                toggle.textContent = '+';
+            }
+        }
+
+        // Scroll vers la section des tarifs
+        function scrollToPricing() {
+            document.getElementById('offres').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Ouvrir le formulaire de contact
+        function openContactForm() {
+            // Rediriger vers la page d'accueil avec le formulaire de contact
+            window.location.href = 'index.html#contact';
+        }
+
+        // Fonction pour ouvrir le modal des offres
+        function openOffersModal() {
+            const modal = document.getElementById('offersModal');
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Fonction pour fermer le modal des offres
+        function closeOffersModal() {
+            const modal = document.getElementById('offersModal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Fonction pour sélectionner un plan
+        function selectPlan(planName, price) {
+            selectedPlan = planName;
+            selectedPrice = price;
+            
+            // Mettre à jour le modal de paiement
+            document.getElementById('selectedPlanName').textContent = planName;
+            document.getElementById('selectedPlanPrice').textContent = price + '€/mois';
+            document.getElementById('payAmount').textContent = price + '€';
+            
+            // Fermer le modal des offres et ouvrir celui du paiement
+            closeOffersModal();
+            openPaymentModal();
+        }
+
+        // Fonction pour ouvrir le modal de paiement
+        function openPaymentModal() {
+            const modal = document.getElementById('paymentModal');
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Fonction pour fermer le modal de paiement
+        function closePaymentModal() {
+            const modal = document.getElementById('paymentModal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Fermer les modals en cliquant à l'extérieur
+        window.onclick = function(event) {
+            const offersModal = document.getElementById('offersModal');
+            const paymentModal = document.getElementById('paymentModal');
+            
+            if (event.target === offersModal) {
+                closeOffersModal();
+            }
+            if (event.target === paymentModal) {
+                closePaymentModal();
+            }
+        }
+
+        // Fermer les modals avec la touche Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeOffersModal();
+                closePaymentModal();
+            }
+        });
+    </script>
 </body>
 </html>
