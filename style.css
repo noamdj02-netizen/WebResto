@@ -1,625 +1,172 @@
-/* Reset et base */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #fafafa;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Header */
-.header {
-    background: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.nav-brand h1 {
-    font-size: 1.5rem;
-    color: #e74c3c;
-    font-weight: 700;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: #e74c3c;
-}
-
-/* Page d'accueil */
-.main {
-    min-height: calc(100vh - 80px);
-}
-
-.hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 6rem 2rem;
-    text-align: center;
-}
-
-.hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
-}
-
-.cta-button {
-    background: #e74c3c;
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 600;
-}
-
-.cta-button:hover {
-    background: #c0392b;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(231, 76, 60, 0.3);
-}
-
-.features {
-    padding: 4rem 0;
-    background: white;
-}
-
-.features h2 {
-    text-align: center;
-    margin-bottom: 3rem;
-    font-size: 2.5rem;
-    color: #333;
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.feature-card {
-    text-align: center;
-    padding: 2rem;
-    border-radius: 15px;
-    background: #f8f9fa;
-    transition: transform 0.3s ease;
-}
-
-.feature-card:hover {
-    transform: translateY(-5px);
-}
-
-.feature-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.feature-card h3 {
-    margin-bottom: 1rem;
-    color: #333;
-}
-
-/* Page des offres */
-.offers-main {
-    min-height: calc(100vh - 80px);
-    background: #f8f9fa;
-}
-
-.offers-hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 4rem 0;
-    text-align: center;
-}
-
-.offers-hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
-}
-
-.offers-hero p {
-    font-size: 1.1rem;
-    opacity: 0.9;
-}
-
-.pricing-section {
-    padding: 4rem 0;
-}
-
-.pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.pricing-card {
-    background: white;
-    border-radius: 20px;
-    padding: 2rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-    position: relative;
-    border: 2px solid transparent;
-}
-
-.pricing-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-}
-
-.pricing-card.featured {
-    border-color: #e74c3c;
-    transform: scale(1.05);
-}
-
-.featured-badge {
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #e74c3c;
-    color: white;
-    padding: 0.5rem 1.5rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-
-.pricing-header {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.pricing-header h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #333;
-}
-
-.price {
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    gap: 0.2rem;
-}
-
-.currency {
-    font-size: 1.2rem;
-    color: #666;
-}
-
-.amount {
-    font-size: 3rem;
-    font-weight: 700;
-    color: #e74c3c;
-}
-
-.period {
-    font-size: 1rem;
-    color: #666;
-}
-
-.pricing-features ul {
-    list-style: none;
-    margin-bottom: 2rem;
-}
-
-.pricing-features li {
-    padding: 0.5rem 0;
-    font-size: 0.95rem;
-}
-
-.availability {
-    margin-bottom: 1.5rem;
-    text-align: center;
-}
-
-.status {
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-.status.available {
-    background: #d4edda;
-    color: #155724;
-}
-
-.status.limited {
-    background: #fff3cd;
-    color: #856404;
-}
-
-.select-plan-btn {
-    width: 100%;
-    background: #e74c3c;
-    color: white;
-    border: none;
-    padding: 1rem;
-    border-radius: 10px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.select-plan-btn:hover {
-    background: #c0392b;
-    transform: translateY(-2px);
-}
-
-.detailed-features {
-    padding: 4rem 0;
-    background: white;
-}
-
-.detailed-features h2 {
-    text-align: center;
-    margin-bottom: 3rem;
-    font-size: 2rem;
-    color: #333;
-}
-
-.features-comparison {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
-.feature-detail {
-    padding: 1.5rem;
-    border-radius: 10px;
-    background: #f8f9fa;
-}
-
-.feature-detail h4 {
-    margin-bottom: 1rem;
-    color: #333;
-    font-size: 1.1rem;
-}
-
-.feature-detail p {
-    color: #666;
-    line-height: 1.6;
-}
-
-/* Modal de paiement */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    backdrop-filter: blur(5px);
-}
-
-.modal-content {
-    background-color: white;
-    margin: 2% auto;
-    padding: 0;
-    border-radius: 20px;
-    width: 90%;
-    max-width: 600px;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
-    animation: modalSlideIn 0.3s ease;
-}
-
-@keyframes modalSlideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.close {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    font-size: 2rem;
-    font-weight: bold;
-    cursor: pointer;
-    color: #999;
-    transition: color 0.3s ease;
-}
-
-.close:hover {
-    color: #333;
-}
-
-.payment-form {
-    padding: 2rem;
-}
-
-.payment-form h2 {
-    margin-bottom: 2rem;
-    color: #333;
-    text-align: center;
-}
-
-.order-summary {
-    background: #f8f9fa;
-    padding: 1.5rem;
-    border-radius: 10px;
-    margin-bottom: 2rem;
-}
-
-.order-summary h3 {
-    margin-bottom: 1rem;
-    color: #333;
-}
-
-.selected-plan {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: 600;
-}
-
-.payment-details h3 {
-    margin-bottom: 1.5rem;
-    color: #333;
-    border-bottom: 2px solid #e74c3c;
-    padding-bottom: 0.5rem;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    color: #333;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 0.75rem;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-}
-
-.form-group input:focus {
-    outline: none;
-    border-color: #e74c3c;
-}
-
-.form-row {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 1rem;
-}
-
-.payment-methods {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.payment-method {
-    flex: 1;
-    padding: 1rem;
-    border: 2px solid #ddd;
-    border-radius: 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.payment-method.active {
-    border-color: #e74c3c;
-    background: #fff5f5;
-}
-
-.payment-method:hover {
-    border-color: #e74c3c;
-}
-
-.checkbox-group {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.5rem;
-}
-
-.checkbox-group input[type="checkbox"] {
-    width: auto;
-    margin-top: 0.2rem;
-}
-
-.checkbox-group label {
-    margin-bottom: 0;
-    font-size: 0.9rem;
-    line-height: 1.4;
-}
-
-.checkbox-group a {
-    color: #e74c3c;
-    text-decoration: none;
-}
-
-.checkbox-group a:hover {
-    text-decoration: underline;
-}
-
-.pay-button {
-    width: 100%;
-    background: linear-gradient(135deg, #e74c3c, #c0392b);
-    color: white;
-    border: none;
-    padding: 1rem;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.pay-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(231, 76, 60, 0.3);
-}
-
-.pay-button:active {
-    transform: translateY(0);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .nav {
-        padding: 1rem;
-    }
-    
-    .nav-links {
-        gap: 1rem;
-    }
-    
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-    
-    .pricing-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .pricing-card.featured {
-        transform: none;
-    }
-    
-    .form-row {
-        grid-template-columns: 1fr;
-    }
-    
-    .modal-content {
-        margin: 5% auto;
-        width: 95%;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero {
-        padding: 3rem 1rem;
-    }
-    
-    .hero-content h1 {
-        font-size: 1.8rem;
-    }
-    
-    .pricing-card {
-        padding: 1.5rem;
-    }
-    
-    .payment-form {
-        padding: 1.5rem;
-    }
-}
-
-/* Animations et micro-interactions */
-.pricing-card {
-    animation: fadeInUp 0.6s ease forwards;
-}
-
-.pricing-card:nth-child(1) { animation-delay: 0.1s; }
-.pricing-card:nth-child(2) { animation-delay: 0.2s; }
-.pricing-card:nth-child(3) { animation-delay: 0.3s; }
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* États de chargement */
-.loading {
-    opacity: 0.7;
-    pointer-events: none;
-}
-
-.loading .pay-button {
-    background: #ccc;
-    cursor: not-allowed;
-}
-
-/* Messages de succès/erreur */
-.message {
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-.message.success {
-    background: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-}
-
-.message.error {
-    background: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebResto - Accueil</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1>🍽️ WebResto</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Votre Restaurant en Ligne</h1>
+                <p>Découvrez nos solutions digitales pour transformer votre restaurant</p>
+                <button class="cta-button" onclick="goToOffers()">
+                    Découvrir nos Offres
+                </button>
+                <button class="cta-button" onclick="openOffersModal()" style="margin-left: 1rem; background: #27ae60;">
+                    Voir les Tarifs
+                </button>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h2>Pourquoi choisir WebResto ?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>Application Mobile</h3>
+                        <p>Une app native pour vos clients</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛒</div>
+                        <h3>Commande en Ligne</h3>
+                        <p>Système de commande intégré</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Analytics</h3>
+                        <p>Suivez vos performances</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal des Offres -->
+    <div id="offersModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOffersModal()">&times;</span>
+            <div class="offers-content">
+                <h2>Nos Offres WebResto</h2>
+                <div class="pricing-grid">
+                    <!-- Offre Starter -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Starter</h3>
+                            <div class="price">29€<span>/mois</span></div>
+                        </div>
+                        <ul class="features-list">
+                            <li>✅ Site web responsive</li>
+                            <li>✅ Menu digital</li>
+                            <li>✅ Réservations en ligne</li>
+                            <li>❌ Application mobile</li>
+                        </ul>
+                        <div class="availability available">✅ Disponible</div>
+                        <button class="select-btn" onclick="selectPlan('Starter', 29)">Choisir</button>
+                    </div>
+
+                    <!-- Offre Professional -->
+                    <div class="pricing-card featured">
+                        <div class="popular-badge">Populaire</div>
+                        <div class="pricing-header">
+                            <h3>Professional</h3>
+                            <div class="price">79€<span>/mois</span></div>
+                        </div>
+                        <ul class="features-list">
+                            <li>✅ Tout du plan Starter</li>
+                            <li>✅ Application mobile</li>
+                            <li>✅ Commandes en ligne</li>
+                            <li>✅ Paiement intégré</li>
+                        </ul>
+                        <div class="availability limited">⚠️ 3 places restantes</div>
+                        <button class="select-btn" onclick="selectPlan('Professional', 79)">Choisir</button>
+                    </div>
+
+                    <!-- Offre Enterprise -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Enterprise</h3>
+                            <div class="price">199€<span>/mois</span></div>
+                        </div>
+                        <ul class="features-list">
+                            <li>✅ Tout du plan Professional</li>
+                            <li>✅ Multi-restaurants</li>
+                            <li>✅ Analytics avancées</li>
+                            <li>✅ Support 24/7</li>
+                        </ul>
+                        <div class="availability available">✅ Sur demande</div>
+                        <button class="select-btn" onclick="selectPlan('Enterprise', 199)">Choisir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Paiement -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePaymentModal()">&times;</span>
+            <div class="payment-form">
+                <h2>Finaliser votre Commande</h2>
+                <div class="order-summary">
+                    <div class="selected-plan">
+                        <span id="selectedPlanName">Plan Professional</span>
+                        <span id="selectedPlanPrice">79€/mois</span>
+                    </div>
+                </div>
+                
+                <form id="paymentForm">
+                    <div class="form-group">
+                        <label for="restaurantName">Nom du Restaurant *</label>
+                        <input type="text" id="restaurantName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Téléphone *</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cardNumber">Numéro de carte *</label>
+                        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiryDate">Expiration *</label>
+                            <input type="text" id="expiryDate" placeholder="MM/AA" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV *</label>
+                            <input type="text" id="cvv" placeholder="123" required>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="pay-button">
+                        Payer <span id="payAmount">79€</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
