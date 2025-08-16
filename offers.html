@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebResto - Nos Offres</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1>🍽️ WebResto</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="offers-main">
+        <section class="offers-hero">
+            <div class="container">
+                <h1>Choisissez votre Formule</h1>
+                <p>Des solutions adaptées à tous les types de restaurants</p>
+            </div>
+        </section>
+
+        <section class="pricing-section">
+            <div class="container">
+                <div class="pricing-grid">
+                    <!-- Offre Starter -->
+                    <div class="pricing-card" data-plan="starter">
+                        <div class="pricing-header">
+                            <h3>Starter</h3>
+                            <div class="price">
+                                <span class="currency">€</span>
+                                <span class="amount">29</span>
+                                <span class="period">/mois</span>
+                            </div>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li>✅ Site web responsive</li>
+                                <li>✅ Menu digital</li>
+                                <li>✅ Réservations en ligne</li>
+                                <li>✅ Support email</li>
+                                <li>❌ Application mobile</li>
+                                <li>❌ Commandes en ligne</li>
+                                <li>❌ Analytics avancées</li>
+                            </ul>
+                        </div>
+                        <div class="availability">
+                            <span class="status available">✅ Disponible immédiatement</span>
+                        </div>
+                        <button class="select-plan-btn" onclick="selectPlan('starter', 29)">
+                            Choisir cette offre
+                        </button>
+                    </div>
+
+                    <!-- Offre Professional -->
+                    <div class="pricing-card featured" data-plan="professional">
+                        <div class="featured-badge">Populaire</div>
+                        <div class="pricing-header">
+                            <h3>Professional</h3>
+                            <div class="price">
+                                <span class="currency">€</span>
+                                <span class="amount">79</span>
+                                <span class="period">/mois</span>
+                            </div>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li>✅ Tout du plan Starter</li>
+                                <li>✅ Application mobile</li>
+                                <li>✅ Commandes en ligne</li>
+                                <li>✅ Paiement intégré</li>
+                                <li>✅ Analytics de base</li>
+                                <li>✅ Support prioritaire</li>
+                                <li>❌ Multi-restaurants</li>
+                            </ul>
+                        </div>
+                        <div class="availability">
+                            <span class="status limited">⚠️ 3 places restantes ce mois</span>
+                        </div>
+                        <button class="select-plan-btn" onclick="selectPlan('professional', 79)">
+                            Choisir cette offre
+                        </button>
+                    </div>
+
+                    <!-- Offre Enterprise -->
+                    <div class="pricing-card" data-plan="enterprise">
+                        <div class="pricing-header">
+                            <h3>Enterprise</h3>
+                            <div class="price">
+                                <span class="currency">€</span>
+                                <span class="amount">199</span>
+                                <span class="period">/mois</span>
+                            </div>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li>✅ Tout du plan Professional</li>
+                                <li>✅ Multi-restaurants</li>
+                                <li>✅ Analytics avancées</li>
+                                <li>✅ API personnalisée</li>
+                                <li>✅ Support 24/7</li>
+                                <li>✅ Formation incluse</li>
+                                <li>✅ Intégrations tierces</li>
+                            </ul>
+                        </div>
+                        <div class="availability">
+                            <span class="status available">✅ Disponible sur demande</span>
+                        </div>
+                        <button class="select-plan-btn" onclick="selectPlan('enterprise', 199)">
+                            Choisir cette offre
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="detailed-features">
+            <div class="container">
+                <h2>Fonctionnalités Détaillées</h2>
+                <div class="features-comparison">
+                    <div class="feature-detail">
+                        <h4>🌐 Site Web Responsive</h4>
+                        <p>Un site web moderne qui s'adapte à tous les écrans. Optimisé pour mobile, tablette et desktop avec un design professionnel.</p>
+                    </div>
+                    <div class="feature-detail">
+                        <h4>📱 Application Mobile</h4>
+                        <p>Application native iOS et Android pour vos clients. Notifications push, géolocalisation et expérience utilisateur optimisée.</p>
+                    </div>
+                    <div class="feature-detail">
+                        <h4>🛒 Commandes en Ligne</h4>
+                        <p>Système complet de commande avec panier, personnalisation des plats et suivi en temps réel.</p>
+                    </div>
+                    <div class="feature-detail">
+                        <h4>💳 Paiement Sécurisé</h4>
+                        <p>Intégration Stripe pour des paiements sécurisés. Cartes bancaires, Apple Pay, Google Pay supportés.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal de Paiement -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePaymentModal()">&times;</span>
+            <div class="payment-form">
+                <h2>Finaliser votre Commande</h2>
+                <div class="order-summary">
+                    <h3>Récapitulatif</h3>
+                    <div class="selected-plan">
+                        <span id="selectedPlanName">Plan Professional</span>
+                        <span id="selectedPlanPrice">79€/mois</span>
+                    </div>
+                </div>
+                
+                <form id="paymentForm" class="payment-details">
+                    <h3>Informations de Facturation</h3>
+                    <div class="form-group">
+                        <label for="companyName">Nom du Restaurant *</label>
+                        <input type="text" id="companyName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Téléphone *</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Adresse</label>
+                        <input type="text" id="address">
+                    </div>
+                    
+                    <h3>Informations de Paiement</h3>
+                    <div class="payment-methods">
+                        <div class="payment-method active" data-method="card">
+                            <span>💳 Carte Bancaire</span>
+                        </div>
+                        <div class="payment-method" data-method="paypal">
+                            <span>🅿️ PayPal</span>
+                        </div>
+                    </div>
+                    
+                    <div id="cardPayment" class="payment-section">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cardNumber">Numéro de carte *</label>
+                                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiryDate">Date d'expiration *</label>
+                                <input type="text" id="expiryDate" placeholder="MM/AA" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV *</label>
+                                <input type="text" id="cvv" placeholder="123" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">J'accepte les <a href="#" target="_blank">conditions d'utilisation</a> et la <a href="#" target="_blank">politique de confidentialité</a></label>
+                    </div>
+                    
+                    <button type="submit" class="pay-button">
+                        <span class="pay-text">Payer maintenant</span>
+                        <span class="pay-amount" id="payAmount">79€</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
