@@ -1,257 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebResto - Accueil</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1>🍽️ WebResto</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Votre Restaurant en Ligne</h1>
+                <p>Découvrez nos solutions digitales pour transformer votre restaurant</p>
+                <button class="cta-button" onclick="goToOffers()">
+                    Découvrir nos Offres
+                </button>
+                <button class="cta-button" onclick="openOffersModal()" style="margin-left: 1rem; background: #27ae60;">
+                    Voir les Tarifs
+                </button>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h2>Pourquoi choisir WebResto ?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>Application Mobile</h3>
+                        <p>Une app native pour vos clients</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛒</div>
+                        <h3>Commande en Ligne</h3>
+                        <p>Système de commande intégré</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Analytics</h3>
+                        <p>Suivez vos performances</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal des Offres -->
+    <div id="offersModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOffersModal()">&times;</span>
+            <div class="offers-content">
+                <h2>Nos Offres WebResto</h2>
+                <div class="pricing-grid">
+                    <!-- Offre Starter -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Starter</h3>
+                            <div class="price">29€<span>/mois</span></div>
+                        </div>
+                        <ul class="features-list">
+                            <li>✅ Site web responsive</li>
+                            <li>✅ Menu digital</li>
+                            <li>✅ Réservations en ligne</li>
+                            <li>❌ Application mobile</li>
+                        </ul>
+                        <div class="availability available">✅ Disponible</div>
+                        <button class="select-btn" onclick="selectPlan('Starter', 29)">Choisir</button>
+                    </div>
+
+                    <!-- Offre Professional -->
+                    <div class="pricing-card featured">
+                        <div class="popular-badge">Populaire</div>
+                        <div class="pricing-header">
+                            <h3>Professional</h3>
+                            <div class="price">79€<span>/mois</span></div>
+                        </div>
+                        <ul class="features-list">
+                            <li>✅ Tout du plan Starter</li>
+                            <li>✅ Application mobile</li>
+                            <li>✅ Commandes en ligne</li>
+                            <li>✅ Paiement intégré</li>
+                        </ul>
+                        <div class="availability limited">⚠️ 3 places restantes</div>
+                        <button class="select-btn" onclick="selectPlan('Professional', 79)">Choisir</button>
+                    </div>
+
+                    <!-- Offre Enterprise -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Enterprise</h3>
+                            <div class="price">199€<span>/mois</span></div>
+                        </div>
+                        <ul class="features-list">
+                            <li>✅ Tout du plan Professional</li>
+                            <li>✅ Multi-restaurants</li>
+                            <li>✅ Analytics avancées</li>
+                            <li>✅ Support 24/7</li>
+                        </ul>
+                        <div class="availability available">✅ Sur demande</div>
+                        <button class="select-btn" onclick="selectPlan('Enterprise', 199)">Choisir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Paiement -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePaymentModal()">&times;</span>
+            <div class="payment-form">
+                <h2>Finaliser votre Commande</h2>
+                <div class="order-summary">
+                    <div class="selected-plan">
+                        <span id="selectedPlanName">Plan Professional</span>
+                        <span id="selectedPlanPrice">79€/mois</span>
+                    </div>
+                </div>
+                
+                <form id="paymentForm">
+                    <div class="form-group">
+                        <label for="restaurantName">Nom du Restaurant *</label>
+                        <input type="text" id="restaurantName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Téléphone *</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cardNumber">Numéro de carte *</label>
+                        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiryDate">Expiration *</label>
+                            <input type="text" id="expiryDate" placeholder="MM/AA" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV *</label>
+                            <input type="text" id="cvv" placeholder="123" required>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="pay-button">
+                        Payer <span id="payAmount">79€</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
 // Navigation vers la page des offres
 function goToOffers() {
     window.location.href = 'offers.html';
 }
 
-// Variables globales pour le paiement
-let selectedPlan = null;
+// Variables pour le système de paiement
+let selectedPlan = '';
 let selectedPrice = 0;
 
-// Sélection d'un plan
+// Ouvrir le modal des offres
+function openOffersModal() {
+    document.getElementById('offersModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Fermer le modal des offres
+function closeOffersModal() {
+    document.getElementById('offersModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Sélectionner un plan
 function selectPlan(planName, price) {
     selectedPlan = planName;
     selectedPrice = price;
     
-    // Mettre à jour le modal avec les informations du plan
-    document.getElementById('selectedPlanName').textContent = `Plan ${planName.charAt(0).toUpperCase() + planName.slice(1)}`;
+    // Mettre à jour les informations dans le modal de paiement
+    document.getElementById('selectedPlanName').textContent = `Plan ${planName}`;
     document.getElementById('selectedPlanPrice').textContent = `${price}€/mois`;
     document.getElementById('payAmount').textContent = `${price}€`;
     
-    // Ouvrir le modal de paiement
+    // Fermer le modal des offres et ouvrir celui de paiement
+    closeOffersModal();
     openPaymentModal();
 }
 
-// Gestion du modal de paiement
+// Ouvrir le modal de paiement
 function openPaymentModal() {
     document.getElementById('paymentModal').style.display = 'block';
     document.body.style.overflow = 'hidden';
 }
 
+// Fermer le modal de paiement
 function closePaymentModal() {
     document.getElementById('paymentModal').style.display = 'none';
     document.body.style.overflow = 'auto';
 }
 
-// Fermer le modal en cliquant à l'extérieur
+// Fermer les modals en cliquant à l'extérieur
 window.onclick = function(event) {
-    const modal = document.getElementById('paymentModal');
-    if (event.target === modal) {
+    const offersModal = document.getElementById('offersModal');
+    const paymentModal = document.getElementById('paymentModal');
+    
+    if (event.target === offersModal) {
+        closeOffersModal();
+    }
+    if (event.target === paymentModal) {
         closePaymentModal();
     }
 }
 
-// Gestion des méthodes de paiement
+// Gestion du formulaire de paiement
 document.addEventListener('DOMContentLoaded', function() {
-    // Sélection des méthodes de paiement
-    const paymentMethods = document.querySelectorAll('.payment-method');
-    paymentMethods.forEach(method => {
-        method.addEventListener('click', function() {
-            paymentMethods.forEach(m => m.classList.remove('active'));
-            this.classList.add('active');
-            
-            const methodType = this.dataset.method;
-            togglePaymentSection(methodType);
+    const paymentForm = document.getElementById('paymentForm');
+    
+    if (paymentForm) {
+        paymentForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            processPayment();
         });
-    });
+    }
     
-    // Formatage automatique des champs
+    // Formatage automatique des champs de carte
     setupCardFormatting();
-    
-    // Gestion du formulaire de paiement
-    setupPaymentForm();
 });
 
-function togglePaymentSection(method) {
-    const cardSection = document.getElementById('cardPayment');
-    
-    if (method === 'card') {
-        cardSection.style.display = 'block';
-    } else {
-        cardSection.style.display = 'none';
-    }
-}
-
 function setupCardFormatting() {
-    const cardNumberInput = document.getElementById('cardNumber');
-    const expiryInput = document.getElementById('expiryDate');
-    const cvvInput = document.getElementById('cvv');
+    const cardNumber = document.getElementById('cardNumber');
+    const expiryDate = document.getElementById('expiryDate');
+    const cvv = document.getElementById('cvv');
     
-    // Formatage du numéro de carte
-    cardNumberInput.addEventListener('input', function(e) {
-        let value = e.target.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
-        let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
-        if (formattedValue.length > 19) formattedValue = formattedValue.substr(0, 19);
-        e.target.value = formattedValue;
-    });
+    if (cardNumber) {
+        cardNumber.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
+            let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+            if (formattedValue.length > 19) formattedValue = formattedValue.substr(0, 19);
+            e.target.value = formattedValue;
+        });
+    }
     
-    // Formatage de la date d'expiration
-    expiryInput.addEventListener('input', function(e) {
-        let value = e.target.value.replace(/\D/g, '');
-        if (value.length >= 2) {
-            value = value.substring(0, 2) + '/' + value.substring(2, 4);
-        }
-        e.target.value = value;
-    });
+    if (expiryDate) {
+        expiryDate.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            e.target.value = value;
+        });
+    }
     
-    // Limitation du CVV
-    cvvInput.addEventListener('input', function(e) {
-        e.target.value = e.target.value.replace(/[^0-9]/g, '').substring(0, 4);
-    });
-}
-
-function setupPaymentForm() {
-    const form = document.getElementById('paymentForm');
-    
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        processPayment();
-    });
+    if (cvv) {
+        cvv.addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/[^0-9]/g, '').substring(0, 3);
+        });
+    }
 }
 
 function processPayment() {
-    const form = document.getElementById('paymentForm');
-    const payButton = form.querySelector('.pay-button');
+    const payButton = document.querySelector('.pay-button');
     const originalText = payButton.innerHTML;
     
-    // Validation des champs requis
-    if (!validateForm()) {
-        return;
-    }
-    
     // Animation de chargement
-    payButton.innerHTML = '<span>🔄 Traitement en cours...</span>';
+    payButton.innerHTML = '🔄 Traitement...';
     payButton.disabled = true;
-    form.classList.add('loading');
     
-    // Simulation du traitement de paiement
+    // Simulation du paiement
     setTimeout(() => {
-        // Simulation d'un paiement réussi
-        showPaymentSuccess();
+        alert(`✅ Paiement réussi pour le plan ${selectedPlan} (${selectedPrice}€/mois)!\n\nVous recevrez un email de confirmation.`);
         
-        // Réinitialiser le bouton après succès
-        setTimeout(() => {
-            payButton.innerHTML = originalText;
-            payButton.disabled = false;
-            form.classList.remove('loading');
-            closePaymentModal();
-        }, 3000);
+        // Réinitialiser
+        payButton.innerHTML = originalText;
+        payButton.disabled = false;
+        closePaymentModal();
         
+        // Réinitialiser le formulaire
+        document.getElementById('paymentForm').reset();
     }, 2000);
 }
-
-function validateForm() {
-    const requiredFields = ['companyName', 'email', 'phone', 'cardNumber', 'expiryDate', 'cvv'];
-    const termsCheckbox = document.getElementById('terms');
-    
-    let isValid = true;
-    
-    // Vérifier les champs requis
-    requiredFields.forEach(fieldId => {
-        const field = document.getElementById(fieldId);
-        if (!field.value.trim()) {
-            field.style.borderColor = '#e74c3c';
-            isValid = false;
-        } else {
-            field.style.borderColor = '#ddd';
-        }
-    });
-    
-    // Vérifier les conditions d'utilisation
-    if (!termsCheckbox.checked) {
-        showMessage('Veuillez accepter les conditions d\'utilisation', 'error');
-        isValid = false;
-    }
-    
-    // Validation de l'email
-    const email = document.getElementById('email').value;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (email && !emailRegex.test(email)) {
-        document.getElementById('email').style.borderColor = '#e74c3c';
-        showMessage('Veuillez entrer une adresse email valide', 'error');
-        isValid = false;
-    }
-    
-    // Validation du numéro de carte
-    const cardNumber = document.getElementById('cardNumber').value.replace(/\s/g, '');
-    if (cardNumber && cardNumber.length < 13) {
-        document.getElementById('cardNumber').style.borderColor = '#e74c3c';
-        showMessage('Numéro de carte invalide', 'error');
-        isValid = false;
-    }
-    
-    return isValid;
-}
-
-function showMessage(text, type) {
-    // Supprimer les anciens messages
-    const existingMessages = document.querySelectorAll('.message');
-    existingMessages.forEach(msg => msg.remove());
-    
-    // Créer le nouveau message
-    const message = document.createElement('div');
-    message.className = `message ${type}`;
-    message.textContent = text;
-    
-    // Insérer le message au début du formulaire
-    const form = document.querySelector('.payment-details');
-    form.insertBefore(message, form.firstChild);
-    
-    // Supprimer automatiquement après 5 secondes
-    setTimeout(() => {
-        message.remove();
-    }, 5000);
-}
-
-function showPaymentSuccess() {
-    const planName = selectedPlan.charAt(0).toUpperCase() + selectedPlan.slice(1);
-    showMessage(`🎉 Paiement réussi ! Bienvenue dans le plan ${planName}. Vous recevrez un email de confirmation sous peu.`, 'success');
-    
-    // Envoyer les données (simulation)
-    console.log('Données de commande:', {
-        plan: selectedPlan,
-        price: selectedPrice,
-        companyName: document.getElementById('companyName').value,
-        email: document.getElementById('email').value,
-        phone: document.getElementById('phone').value,
-        timestamp: new Date().toISOString()
-    });
-}
-
-// Gestion du clavier (Escape pour fermer le modal)
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        closePaymentModal();
-    }
-});
-
-// Animation au scroll pour la page d'accueil
-function setupScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-    
-    // Observer les cartes de fonctionnalités
-    document.querySelectorAll('.feature-card').forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'all 0.6s ease';
-        observer.observe(card);
-    });
-}
-
-// Initialiser les animations au chargement de la page
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupScrollAnimations);
-} else {
-    setupScrollAnimations();
-}
+</script>
+</body>
+</html>
