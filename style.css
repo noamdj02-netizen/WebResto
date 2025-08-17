@@ -1,172 +1,391 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebResto - Accueil</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header class="header">
-        <nav class="nav">
-            <div class="nav-brand">
-                <h1>🍽️ WebResto</h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+/* CSS Reset and Variables */
+:root {
+    --bg: #0f172a;
+    --bg-soft: #111827;
+    --panel: #0b1220;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --primary: #6366f1;
+    --primary-600: #5558e6;
+    --primary-700: #4f46e5;
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --card: #0b1220;
+    --card-2: #0c1424;
+    --border: #1f2937;
+    --shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
 
-    <main class="main">
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Votre Restaurant en Ligne</h1>
-                <p>Découvrez nos solutions digitales pour transformer votre restaurant</p>
-                <button class="cta-button" onclick="goToOffers()">
-                    Découvrir nos Offres
-                </button>
-                <button class="cta-button" onclick="openOffersModal()" style="margin-left: 1rem; background: #27ae60;">
-                    Voir les Tarifs
-                </button>
-            </div>
-        </section>
+* {
+    box-sizing: border-box;
+}
 
-        <section class="features">
-            <div class="container">
-                <h2>Pourquoi choisir WebResto ?</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">📱</div>
-                        <h3>Application Mobile</h3>
-                        <p>Une app native pour vos clients</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🛒</div>
-                        <h3>Commande en Ligne</h3>
-                        <p>Système de commande intégré</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📊</div>
-                        <h3>Analytics</h3>
-                        <p>Suivez vos performances</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(1200px 800px at 20% 10%, rgba(99,102,241,0.15), transparent 60%),
+                radial-gradient(1000px 600px at 80% 20%, rgba(34,197,94,0.12), transparent 70%),
+                var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    line-height: 1.5;
+}
 
-    <!-- Modal des Offres -->
-    <div id="offersModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeOffersModal()">&times;</span>
-            <div class="offers-content">
-                <h2>Nos Offres WebResto</h2>
-                <div class="pricing-grid">
-                    <!-- Offre Starter -->
-                    <div class="pricing-card">
-                        <div class="pricing-header">
-                            <h3>Starter</h3>
-                            <div class="price">29€<span>/mois</span></div>
-                        </div>
-                        <ul class="features-list">
-                            <li>✅ Site web responsive</li>
-                            <li>✅ Menu digital</li>
-                            <li>✅ Réservations en ligne</li>
-                            <li>❌ Application mobile</li>
-                        </ul>
-                        <div class="availability available">✅ Disponible</div>
-                        <button class="select-btn" onclick="selectPlan('Starter', 29)">Choisir</button>
-                    </div>
+img { max-width: 100%; display: block; }
 
-                    <!-- Offre Professional -->
-                    <div class="pricing-card featured">
-                        <div class="popular-badge">Populaire</div>
-                        <div class="pricing-header">
-                            <h3>Professional</h3>
-                            <div class="price">79€<span>/mois</span></div>
-                        </div>
-                        <ul class="features-list">
-                            <li>✅ Tout du plan Starter</li>
-                            <li>✅ Application mobile</li>
-                            <li>✅ Commandes en ligne</li>
-                            <li>✅ Paiement intégré</li>
-                        </ul>
-                        <div class="availability limited">⚠️ 3 places restantes</div>
-                        <button class="select-btn" onclick="selectPlan('Professional', 79)">Choisir</button>
-                    </div>
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
 
-                    <!-- Offre Enterprise -->
-                    <div class="pricing-card">
-                        <div class="pricing-header">
-                            <h3>Enterprise</h3>
-                            <div class="price">199€<span>/mois</span></div>
-                        </div>
-                        <ul class="features-list">
-                            <li>✅ Tout du plan Professional</li>
-                            <li>✅ Multi-restaurants</li>
-                            <li>✅ Analytics avancées</li>
-                            <li>✅ Support 24/7</li>
-                        </ul>
-                        <div class="availability available">✅ Sur demande</div>
-                        <button class="select-btn" onclick="selectPlan('Enterprise', 199)">Choisir</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+/* Header / Nav */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: linear-gradient(180deg, rgba(15,23,42,0.9), rgba(15,23,42,0.6) 70%, rgba(15,23,42,0));
+    backdrop-filter: saturate(160%) blur(6px);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+}
 
-    <!-- Modal de Paiement -->
-    <div id="paymentModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closePaymentModal()">&times;</span>
-            <div class="payment-form">
-                <h2>Finaliser votre Commande</h2>
-                <div class="order-summary">
-                    <div class="selected-plan">
-                        <span id="selectedPlanName">Plan Professional</span>
-                        <span id="selectedPlanPrice">79€/mois</span>
-                    </div>
-                </div>
-                
-                <form id="paymentForm">
-                    <div class="form-group">
-                        <label for="restaurantName">Nom du Restaurant *</label>
-                        <input type="text" id="restaurantName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Téléphone *</label>
-                        <input type="tel" id="phone" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="cardNumber">Numéro de carte *</label>
-                        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="expiryDate">Expiration *</label>
-                            <input type="text" id="expiryDate" placeholder="MM/AA" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="cvv">CVV *</label>
-                            <input type="text" id="cvv" placeholder="123" required>
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="pay-button">
-                        Payer <span id="payAmount">79€</span>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 1.25rem;
+}
+
+.nav-brand h1 {
+    margin: 0;
+    font-size: 1.125rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+}
+
+.nav-links a:hover {
+    border-color: rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+}
+
+/* Hero */
+.hero {
+    padding: 5rem 1.25rem 4rem;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: clamp(2rem, 2.6rem + 1.5vw, 3.5rem);
+    line-height: 1.1;
+    margin: 0 0 0.75rem 0;
+    letter-spacing: -0.02em;
+}
+
+.hero-content p {
+    margin: 0 auto 2rem;
+    color: var(--muted);
+    max-width: 720px;
+}
+
+.cta-button {
+    appearance: none;
+    border: none;
+    background: linear-gradient(140deg, var(--primary) 0%, var(--primary-700) 100%);
+    color: white;
+    padding: 0.85rem 1.15rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 8px 24px rgba(79,70,229,0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.2s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 30px rgba(79,70,229,0.5);
+}
+
+/* Features */
+.features {
+    padding: 2rem 0 3rem;
+}
+
+.features h2 {
+    text-align: center;
+    margin: 0 0 2rem 0;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.feature-card {
+    background: linear-gradient(180deg, var(--card) 0%, var(--card-2) 100%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.25rem;
+    box-shadow: var(--shadow);
+}
+
+.feature-icon {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Pricing Grid (used in modal and offers page) */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.pricing-card {
+    position: relative;
+    background: linear-gradient(180deg, var(--card) 0%, var(--card-2) 100%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.25rem;
+    box-shadow: var(--shadow);
+}
+
+.pricing-card .pricing-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.pricing-card .price {
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.pricing-card .price span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--muted);
+    margin-left: 0.2rem;
+}
+
+.pricing-card .features-list,
+.pricing-card .pricing-features ul {
+    list-style: none;
+    margin: 0.75rem 0 1rem 0;
+    padding: 0;
+}
+
+.pricing-card .features-list li,
+.pricing-card .pricing-features li {
+    padding: 0.35rem 0;
+    color: var(--text);
+}
+
+.pricing-card .availability { color: var(--muted); margin-bottom: 0.75rem; }
+.available { color: var(--success); }
+.limited { color: var(--warning); }
+
+.select-btn,
+.select-plan-btn {
+    appearance: none;
+    width: 100%;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.04);
+    color: var(--text);
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.pricing-card.featured {
+    border-color: rgba(99,102,241,0.35);
+    box-shadow: 0 10px 30px rgba(99,102,241,0.25);
+}
+
+.featured .featured-badge,
+.pricing-card .popular-badge {
+    position: absolute;
+    top: -10px;
+    right: 12px;
+    background: linear-gradient(140deg, var(--primary) 0%, var(--primary-600) 100%);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.modal-content {
+    background: linear-gradient(180deg, var(--panel) 0%, #0b1220 100%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    max-width: 900px;
+    margin: 3rem auto;
+    box-shadow: var(--shadow);
+}
+
+.modal-content .offers-content,
+.modal-content .payment-form {
+    padding: 1.25rem;
+}
+
+.close {
+    position: absolute;
+    right: 14px;
+    top: 10px;
+    font-size: 1.75rem;
+    cursor: pointer;
+    color: var(--muted);
+}
+
+/* Payment */
+.payment-form h2 { margin: 0 0 1rem 0; }
+.order-summary {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+}
+.selected-plan {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+}
+
+.form-group { margin-bottom: 0.9rem; }
+.form-group label { display: block; margin-bottom: 0.35rem; color: var(--muted); }
+.form-group input {
+    width: 100%;
+    background: #0c1424;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.65rem 0.75rem;
+    border-radius: 10px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.pay-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    appearance: none;
+    border: none;
+    background: linear-gradient(140deg, var(--primary) 0%, var(--primary-700) 100%);
+    color: white;
+    padding: 0.9rem 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: 0 8px 24px rgba(79,70,229,0.35);
+}
+
+/* Payment method selector (offers.html) */
+.payment-methods {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin: 1rem 0 0.75rem;
+}
+
+.payment-method {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.6rem 0.75rem;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    user-select: none;
+}
+
+.payment-method.active {
+    outline: 2px solid rgba(99,102,241,0.6);
+    background: rgba(99,102,241,0.1);
+}
+
+.payment-section { margin-top: 0.5rem; }
+.checkbox-group { display: flex; align-items: center; gap: 0.5rem; }
+.checkbox-group a { color: var(--text); text-decoration: underline; }
+
+/* Offers page specific */
+.offers-hero {
+    padding: 3rem 1.25rem 2rem;
+    background: radial-gradient(800px 500px at 15% 10%, rgba(99,102,241,0.12), transparent 60%),
+                radial-gradient(600px 400px at 80% 20%, rgba(34,197,94,0.10), transparent 70%);
+}
+
+.offers-hero h1 {
+    margin: 0 0 0.5rem 0;
+    font-size: clamp(1.8rem, 1.6rem + 1.8vw, 3rem);
+}
+
+.pricing-section { padding: 1rem 0 2rem; }
+.detailed-features { padding: 1rem 0 2.5rem; }
+
+.features-comparison {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.feature-detail {
+    background: linear-gradient(180deg, var(--card) 0%, var(--card-2) 100%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1rem;
+    box-shadow: var(--shadow);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .features-grid,
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .features-comparison { grid-template-columns: 1fr; }
+
+    .hero { padding-top: 3.5rem; }
+}
