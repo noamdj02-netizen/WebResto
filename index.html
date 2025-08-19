@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebResto - Accueil</title>
+    <title>WebResto - Votre Restaurant Numérique</title>
+    <meta name="description" content="Transformez votre restaurant avec WebResto - Solutions digitales complètes pour restaurants: site web, app mobile, commandes en ligne et plus.">
+    <meta name="keywords" content="restaurant, digital, app mobile, commandes en ligne, site web restaurant">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍽️</text></svg>">
 </head>
 <body>
     <header class="header">
@@ -15,48 +18,416 @@
             <ul class="nav-links">
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#services">Services</a></li>
+                <li><a href="#menu-demo">Menu Demo</a></li>
+                <li><a href="#temoignages">Témoignages</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="nav-mobile">
+                <button class="menu-toggle" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </nav>
     </header>
 
     <main class="main">
-        <section class="hero">
+        <!-- Hero Section -->
+        <section id="accueil" class="hero">
             <div class="hero-content">
-                <h1>Votre Restaurant en Ligne</h1>
-                <p>Découvrez nos solutions digitales pour transformer votre restaurant</p>
-                <button class="cta-button" onclick="goToOffers()">
-                    Découvrir nos Offres
-                </button>
-                <button class="cta-button" onclick="openOffersModal()" style="margin-left: 1rem; background: #27ae60;">
-                    Voir les Tarifs
-                </button>
+                <h1>Votre Restaurant à l'Ère Numérique</h1>
+                <p>Transformez votre établissement avec nos solutions digitales innovantes. Site web responsive, application mobile, commandes en ligne et bien plus encore.</p>
+                <div class="hero-buttons">
+                    <button class="cta-button" onclick="goToOffers()">
+                        🚀 Découvrir nos Offres
+                    </button>
+                    <button class="cta-button secondary" onclick="openOffersModal()">
+                        💰 Voir les Tarifs
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Restaurants clients</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Satisfaction client</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Support disponible</span>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="features">
+        <!-- Services Section -->
+        <section id="services" class="features">
             <div class="container">
                 <h2>Pourquoi choisir WebResto ?</h2>
+                <p class="section-subtitle">Des solutions complètes pour moderniser votre restaurant</p>
                 <div class="features-grid">
                     <div class="feature-card">
                         <div class="feature-icon">📱</div>
                         <h3>Application Mobile</h3>
-                        <p>Une app native pour vos clients</p>
+                        <p>Une application native iOS et Android pour vos clients avec notifications push et géolocalisation.</p>
+                        <ul class="feature-list">
+                            <li>• Interface intuitive</li>
+                            <li>• Notifications push</li>
+                            <li>• Programme de fidélité</li>
+                        </ul>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🛒</div>
-                        <h3>Commande en Ligne</h3>
-                        <p>Système de commande intégré</p>
+                        <h3>Commandes en Ligne</h3>
+                        <p>Système de commande complet avec panier intelligent et suivi en temps réel.</p>
+                        <ul class="feature-list">
+                            <li>• Panier intelligent</li>
+                            <li>• Suivi en temps réel</li>
+                            <li>• Gestion des stocks</li>
+                        </ul>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">📊</div>
-                        <h3>Analytics</h3>
-                        <p>Suivez vos performances</p>
+                        <h3>Analytics Avancées</h3>
+                        <p>Tableaux de bord détaillés pour suivre vos performances et optimiser votre business.</p>
+                        <ul class="feature-list">
+                            <li>• Rapports détaillés</li>
+                            <li>• Analyses prédictives</li>
+                            <li>• Insights clients</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💳</div>
+                        <h3>Paiement Sécurisé</h3>
+                        <p>Intégration complète des systèmes de paiement modernes et sécurisés.</p>
+                        <ul class="feature-list">
+                            <li>• Stripe & PayPal</li>
+                            <li>• Apple Pay & Google Pay</li>
+                            <li>• Sécurité maximale</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Marketing Digital</h3>
+                        <p>Outils marketing intégrés pour promouvoir votre restaurant et fidéliser vos clients.</p>
+                        <ul class="feature-list">
+                            <li>• Campagnes email</li>
+                            <li>• Réseaux sociaux</li>
+                            <li>• Programme de fidélité</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3>Support 24/7</h3>
+                        <p>Une équipe dédiée pour vous accompagner dans votre transformation digitale.</p>
+                        <ul class="feature-list">
+                            <li>• Support technique</li>
+                            <li>• Formation incluse</li>
+                            <li>• Accompagnement personnalisé</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Demo Section -->
+        <section id="menu-demo" class="menu-showcase">
+            <div class="container">
+                <h2>Aperçu de votre Menu Digital</h2>
+                <p class="section-subtitle">Découvrez comment vos plats seront présentés</p>
+                
+                <div class="menu-demo-tabs">
+                    <button class="menu-tab active" onclick="showMenuCategory('entrees')">Entrées</button>
+                    <button class="menu-tab" onclick="showMenuCategory('plats')">Plats</button>
+                    <button class="menu-tab" onclick="showMenuCategory('desserts')">Desserts</button>
+                </div>
+
+                <div class="menu-items" id="menu-entrees">
+                    <div class="menu-item">
+                        <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='150' viewBox='0 0 200 150'><rect width='200' height='150' fill='%23f8f9fa'/><text x='50%' y='50%' font-size='20' fill='%236c757d' text-anchor='middle' dy='.3em'>🥗 Salade</text></svg>" alt="Salade César" class="menu-item-image">
+                        <div class="menu-item-content">
+                            <h4>Salade César Authentique</h4>
+                            <p>Salade romaine fraîche, parmesan, croûtons maison et notre sauce César signature</p>
+                            <div class="menu-item-footer">
+                                <span class="price">12.50€</span>
+                                <button class="add-to-cart">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='150' viewBox='0 0 200 150'><rect width='200' height='150' fill='%23f8f9fa'/><text x='50%' y='50%' font-size='20' fill='%236c757d' text-anchor='middle' dy='.3em'>🍤 Crevettes</text></svg>" alt="Crevettes" class="menu-item-image">
+                        <div class="menu-item-content">
+                            <h4>Crevettes à l'Ail</h4>
+                            <p>Grosses crevettes sautées à l'ail, persil frais et huile d'olive extra vierge</p>
+                            <div class="menu-item-footer">
+                                <span class="price">16.90€</span>
+                                <button class="add-to-cart">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-items hidden" id="menu-plats">
+                    <div class="menu-item">
+                        <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='150' viewBox='0 0 200 150'><rect width='200' height='150' fill='%23f8f9fa'/><text x='50%' y='50%' font-size='20' fill='%236c757d' text-anchor='middle' dy='.3em'>🥩 Steak</text></svg>" alt="Steak" class="menu-item-image">
+                        <div class="menu-item-content">
+                            <h4>Côte de Bœuf Premium</h4>
+                            <p>Côte de bœuf maturée 28 jours, sauce au poivre vert et accompagnements de saison</p>
+                            <div class="menu-item-footer">
+                                <span class="price">28.50€</span>
+                                <button class="add-to-cart">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='150' viewBox='0 0 200 150'><rect width='200' height='150' fill='%23f8f9fa'/><text x='50%' y='50%' font-size='20' fill='%236c757d' text-anchor='middle' dy='.3em'>🐟 Saumon</text></svg>" alt="Saumon" class="menu-item-image">
+                        <div class="menu-item-content">
+                            <h4>Saumon Grillé</h4>
+                            <p>Filet de saumon norvégien grillé, risotto aux champignons et légumes croquants</p>
+                            <div class="menu-item-footer">
+                                <span class="price">24.90€</span>
+                                <button class="add-to-cart">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-items hidden" id="menu-desserts">
+                    <div class="menu-item">
+                        <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='150' viewBox='0 0 200 150'><rect width='200' height='150' fill='%23f8f9fa'/><text x='50%' y='50%' font-size='20' fill='%236c757d' text-anchor='middle' dy='.3em'>🍰 Tiramisu</text></svg>" alt="Tiramisu" class="menu-item-image">
+                        <div class="menu-item-content">
+                            <h4>Tiramisu Maison</h4>
+                            <p>Tiramisu traditionnel préparé avec du mascarpone frais et café italien</p>
+                            <div class="menu-item-footer">
+                                <span class="price">8.50€</span>
+                                <button class="add-to-cart">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='150' viewBox='0 0 200 150'><rect width='200' height='150' fill='%23f8f9fa'/><text x='50%' y='50%' font-size='20' fill='%236c757d' text-anchor='middle' dy='.3em'>🍫 Fondant</text></svg>" alt="Fondant" class="menu-item-image">
+                        <div class="menu-item-content">
+                            <h4>Fondant au Chocolat</h4>
+                            <p>Moelleux au chocolat noir 70%, cœur coulant et glace vanille bourbon</p>
+                            <div class="menu-item-footer">
+                                <span class="price">9.90€</span>
+                                <button class="add-to-cart">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="statistics">
+            <div class="container">
+                <h2>WebResto en Chiffres</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-number" data-target="500">0</div>
+                        <div class="stat-label">Restaurants clients</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📱</div>
+                        <div class="stat-number" data-target="1200000">0</div>
+                        <div class="stat-label">Téléchargements d'apps</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-number" data-target="35">0</div>
+                        <div class="stat-label">% d'augmentation du CA moyen</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-number" data-target="98">0</div>
+                        <div class="stat-label">% de satisfaction client</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="temoignages" class="testimonials">
+            <div class="container">
+                <h2>Ce que disent nos clients</h2>
+                <p class="section-subtitle">Découvrez les témoignages de restaurateurs qui nous font confiance</p>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <p>"WebResto a révolutionné notre restaurant ! En 3 mois, nos commandes en ligne ont augmenté de 150%. L'équipe est exceptionnelle."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><circle cx='30' cy='30' r='30' fill='%23e74c3c'/><text x='50%' y='50%' font-size='24' fill='white' text-anchor='middle' dy='.3em'>MC</text></svg>" alt="Marie Chefson" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Marie Chefson</h4>
+                                <span>Propriétaire - Bistrot du Coin</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <p>"L'application mobile est fantastique. Nos clients adorent commander depuis chez eux. Le support client est irréprochable !"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><circle cx='30' cy='30' r='30' fill='%233498db'/><text x='50%' y='50%' font-size='24' fill='white' text-anchor='middle' dy='.3em'>PD</text></svg>" alt="Pierre Delacroix" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Pierre Delacroix</h4>
+                                <span>Chef - Restaurant Gastronomique Le Saveur</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <p>"Grâce aux analytics, nous avons optimisé notre menu et augmenté notre rentabilité. Un investissement qui se rentabilise rapidement."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><circle cx='30' cy='30' r='30' fill='%2327ae60'/><text x='50%' y='50%' font-size='24' fill='white' text-anchor='middle' dy='.3em'>SL</text></svg>" alt="Sophie Laurent" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Sophie Laurent</h4>
+                                <span>Gérante - Pizzeria Bella Vista</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h2>Prêt à transformer votre restaurant ?</h2>
+                        <p>Contactez-nous dès aujourd'hui pour une démonstration personnalisée et découvrez comment WebResto peut booster votre business.</p>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="contact-icon">📞</div>
+                                <div class="contact-details">
+                                    <h4>Téléphone</h4>
+                                    <p>+33 1 23 45 67 89</p>
+                                </div>
+                            </div>
+                            <div class="contact-method">
+                                <div class="contact-icon">📧</div>
+                                <div class="contact-details">
+                                    <h4>Email</h4>
+                                    <p>contact@webresto.fr</p>
+                                </div>
+                            </div>
+                            <div class="contact-method">
+                                <div class="contact-icon">📍</div>
+                                <div class="contact-details">
+                                    <h4>Adresse</h4>
+                                    <p>123 Avenue des Restaurants<br>75001 Paris, France</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-container">
+                        <form class="contact-form" id="contactForm">
+                            <h3>Demander une démo</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">Prénom *</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Nom *</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="restaurant">Nom du restaurant *</label>
+                                <input type="text" id="restaurant" name="restaurant" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contactEmail">Email *</label>
+                                    <input type="email" id="contactEmail" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactPhone">Téléphone *</label>
+                                    <input type="tel" id="contactPhone" name="phone" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="4" placeholder="Parlez-nous de votre projet..."></textarea>
+                            </div>
+                            <div class="form-group checkbox-group">
+                                <input type="checkbox" id="consent" name="consent" required>
+                                <label for="consent">J'accepte d'être contacté par WebResto concernant leurs services</label>
+                            </div>
+                            <button type="submit" class="cta-button">
+                                Demander une démo gratuite
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🍽️ WebResto</h3>
+                    <p>La solution digitale complète pour les restaurants modernes.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="Instagram">📸</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="#">Site Web Restaurant</a></li>
+                        <li><a href="#">Application Mobile</a></li>
+                        <li><a href="#">Commandes en Ligne</a></li>
+                        <li><a href="#">Système de Paiement</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Centre d'aide</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Tutoriels</a></li>
+                        <li><a href="#">Contact Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Légal</h4>
+                    <ul>
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">RGPD</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WebResto. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- Modal des Offres -->
     <div id="offersModal" class="modal">
@@ -133,8 +504,8 @@
                 
                 <form id="paymentForm">
                     <div class="form-group">
-                        <label for="restaurantName">Nom du Restaurant *</label>
-                        <input type="text" id="restaurantName" required>
+                        <label for="companyName">Nom du Restaurant *</label>
+                        <input type="text" id="companyName" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email *</label>
@@ -160,6 +531,11 @@
                         </div>
                     </div>
                     
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">J'accepte les <a href="#" target="_blank">conditions d'utilisation</a></label>
+                    </div>
+                    
                     <button type="submit" class="pay-button">
                         Payer <span id="payAmount">79€</span>
                     </button>
@@ -167,6 +543,7 @@
             </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
