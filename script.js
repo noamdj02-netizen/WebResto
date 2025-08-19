@@ -168,93 +168,290 @@
         </div>
     </div>
     <script>
-// Navigation vers la page des offres
-function goToOffers() {
-    window.location.href = 'offers.html';
-}
-
-// Variables pour le système de paiement
-let selectedPlan = '';
+// Variables globales
+let selectedPlan = null;
 let selectedPrice = 0;
 
-// Ouvrir le modal des offres
+// Initialisation au chargement de la page
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('WebResto initialisé avec succès !');
+    
+    // Ajouter des animations d'entrée
+    animateOnScroll();
+    
+    // Initialiser les tooltips et interactions
+    initializeInteractions();
+});
+
+// Fonction pour aller vers la page des offres
+function goToOffers() {
+    // Scroll vers la section des offres
+    const offersSection = document.querySelector('.features');
+    if (offersSection) {
+        offersSection.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+// Fonction pour ouvrir le modal des offres
 function openOffersModal() {
-    document.getElementById('offersModal').style.display = 'block';
-    document.body.style.overflow = 'hidden';
+    const modal = document.getElementById('offersModal');
+    if (modal) {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        
+        // Animation d'entrée
+        modal.querySelector('.modal-content').style.transform = 'scale(0.8)';
+        modal.querySelector('.modal-content').style.opacity = '0';
+        
+        setTimeout(() => {
+            modal.querySelector('.modal-content').style.transform = 'scale(1)';
+            modal.querySelector('.modal-content').style.opacity = '1';
+        }, 100);
+    }
 }
 
-// Fermer le modal des offres
+// Fonction pour fermer le modal des offres
 function closeOffersModal() {
-    document.getElementById('offersModal').style.display = 'none';
-    document.body.style.overflow = 'auto';
+    const modal = document.getElementById('offersModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
 }
 
-// Sélectionner un plan
+// Fonction pour sélectionner un plan
 function selectPlan(planName, price) {
     selectedPlan = planName;
     selectedPrice = price;
     
-    // Mettre à jour les informations dans le modal de paiement
-    document.getElementById('selectedPlanName').textContent = `Plan ${planName}`;
-    document.getElementById('selectedPlanPrice').textContent = `${price}€/mois`;
-    document.getElementById('payAmount').textContent = `${price}€`;
+    // Mettre à jour l'affichage du modal de paiement
+    document.getElementById('selectedPlanName').textContent = planName;
+    document.getElementById('selectedPlanPrice').textContent = price + '€/mois';
+    document.getElementById('payAmount').textContent = price + '€';
     
-    // Fermer le modal des offres et ouvrir celui de paiement
+    // Fermer le modal des offres
     closeOffersModal();
+    
+    // Ouvrir le modal de paiement
     openPaymentModal();
+    
+    // Animation de sélection
+    showSelectionAnimation(planName);
 }
 
-// Ouvrir le modal de paiement
+// Fonction pour ouvrir le modal de paiement
 function openPaymentModal() {
-    document.getElementById('paymentModal').style.display = 'block';
-    document.body.style.overflow = 'hidden';
+    const modal = document.getElementById('paymentModal');
+    if (modal) {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        
+        // Animation d'entrée
+        modal.querySelector('.modal-content').style.transform = 'scale(0.8)';
+        modal.querySelector('.modal-content').style.opacity = '0';
+        
+        setTimeout(() => {
+            modal.querySelector('.modal-content').style.transform = 'scale(1)';
+            modal.querySelector('.modal-content').style.opacity = '1';
+        }, 100);
+    }
 }
 
-// Fermer le modal de paiement
+// Fonction pour fermer le modal de paiement
 function closePaymentModal() {
-    document.getElementById('paymentModal').style.display = 'none';
-    document.body.style.overflow = 'auto';
-}
-
-// Fermer les modals en cliquant à l'extérieur
-window.onclick = function(event) {
-    const offersModal = document.getElementById('offersModal');
-    const paymentModal = document.getElementById('paymentModal');
-    
-    if (event.target === offersModal) {
-        closeOffersModal();
-    }
-    if (event.target === paymentModal) {
-        closePaymentModal();
+    const modal = document.getElementById('paymentModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
     }
 }
 
-// Gestion du formulaire de paiement
-document.addEventListener('DOMContentLoaded', function() {
-    const paymentForm = document.getElementById('paymentForm');
+// Fonction pour gérer la soumission du formulaire de paiement
+function handlePaymentSubmission(event) {
+    event.preventDefault();
     
-    if (paymentForm) {
-        paymentForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            processPayment();
+    // Récupérer les données du formulaire
+    const formData = new FormData(event.target);
+    const restaurantName = document.getElementById('restaurantName').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    
+    // Validation basique
+    if (!restaurantName || !email || !phone) {
+        showNotification('Veuillez remplir tous les champs obligatoires', 'error');
+        return;
+    }
+    
+    // Simuler le traitement du paiement
+    showPaymentProcessing();
+    
+    setTimeout(() => {
+        // Simuler une réponse de succès
+        showPaymentSuccess();
+        
+        // Réinitialiser le formulaire
+        event.target.reset();
+        
+        // Fermer le modal après un délai
+        setTimeout(() => {
+            closePaymentModal();
+        }, 3000);
+    }, 2000);
+}
+
+// Fonction pour afficher le traitement du paiement
+function showPaymentProcessing() {
+    const payButton = document.querySelector('.pay-button');
+    const originalText = payButton.innerHTML;
+    
+    payButton.innerHTML = '<span class="spinner"></span> Traitement...';
+    payButton.disabled = true;
+    
+    // Ajouter la classe de style pour le spinner
+    payButton.classList.add('processing');
+}
+
+// Fonction pour afficher le succès du paiement
+function showPaymentSuccess() {
+    const payButton = document.querySelector('.pay-button');
+    
+    payButton.innerHTML = '✅ Paiement réussi !';
+    payButton.style.background = 'linear-gradient(45deg, #27ae60, #2ecc71)';
+    
+    showNotification('Paiement traité avec succès ! Votre restaurant sera configuré dans les 24h.', 'success');
+}
+
+// Fonction pour afficher les notifications
+function showNotification(message, type = 'info') {
+    // Créer l'élément de notification
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <span class="notification-message">${message}</span>
+            <button class="notification-close" onclick="this.parentElement.parentElement.remove()">×</button>
+        </div>
+    `;
+    
+    // Ajouter au body
+    document.body.appendChild(notification);
+    
+    // Animation d'entrée
+    notification.style.transform = 'translateX(100%)';
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Auto-suppression après 5 secondes
+    setTimeout(() => {
+        if (notification.parentElement) {
+            notification.style.transform = 'translateX(100%)';
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 300);
+        }
+    }, 5000);
+}
+
+// Fonction pour afficher l'animation de sélection
+function showSelectionAnimation(planName) {
+    const notification = document.createElement('div');
+    notification.className = 'selection-notification';
+    notification.innerHTML = `
+        <div class="selection-content">
+            <span class="selection-icon">🎯</span>
+            <span class="selection-text">Plan ${planName} sélectionné !</span>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Animation
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 100);
+    
+    // Suppression automatique
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            if (notification.parentElement) {
+                notification.remove();
+            }
+        }, 300);
+    }, 2000);
+}
+
+// Fonction pour les animations au scroll
+function animateOnScroll() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+            }
         });
+    }, observerOptions);
+    
+    // Observer les éléments à animer
+    const animatedElements = document.querySelectorAll('.feature-card, .pricing-card');
+    animatedElements.forEach(el => observer.observe(el));
+}
+
+// Fonction pour initialiser les interactions
+function initializeInteractions() {
+    // Gestionnaire pour le formulaire de paiement
+    const paymentForm = document.getElementById('paymentForm');
+    if (paymentForm) {
+        paymentForm.addEventListener('submit', handlePaymentSubmission);
     }
     
-    // Formatage automatique des champs de carte
-    setupCardFormatting();
-});
+    // Fermeture des modals en cliquant à l'extérieur
+    window.addEventListener('click', function(event) {
+        const offersModal = document.getElementById('offersModal');
+        const paymentModal = document.getElementById('paymentModal');
+        
+        if (event.target === offersModal) {
+            closeOffersModal();
+        }
+        if (event.target === paymentModal) {
+            closePaymentModal();
+        }
+    });
+    
+    // Fermeture des modals avec la touche Escape
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeOffersModal();
+            closePaymentModal();
+        }
+    });
+    
+    // Validation en temps réel des champs de carte
+    initializeCardValidation();
+}
 
-function setupCardFormatting() {
+// Fonction pour initialiser la validation des cartes
+function initializeCardValidation() {
     const cardNumber = document.getElementById('cardNumber');
     const expiryDate = document.getElementById('expiryDate');
     const cvv = document.getElementById('cvv');
     
     if (cardNumber) {
         cardNumber.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
-            let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
-            if (formattedValue.length > 19) formattedValue = formattedValue.substr(0, 19);
-            e.target.value = formattedValue;
+            let value = e.target.value.replace(/\s/g, '');
+            value = value.replace(/\D/g, '');
+            value = value.replace(/(\d{4})/g, '$1 ').trim();
+            e.target.value = value.substring(0, 19);
         });
     }
     
@@ -264,38 +461,201 @@ function setupCardFormatting() {
             if (value.length >= 2) {
                 value = value.substring(0, 2) + '/' + value.substring(2, 4);
             }
-            e.target.value = value;
+            e.target.value = value.substring(0, 5);
         });
     }
     
     if (cvv) {
         cvv.addEventListener('input', function(e) {
-            e.target.value = e.target.value.replace(/[^0-9]/g, '').substring(0, 3);
+            e.target.value = e.target.value.replace(/\D/g, '').substring(0, 3);
         });
     }
 }
 
-function processPayment() {
-    const payButton = document.querySelector('.pay-button');
-    const originalText = payButton.innerHTML;
-    
-    // Animation de chargement
-    payButton.innerHTML = '🔄 Traitement...';
-    payButton.disabled = true;
-    
-    // Simulation du paiement
-    setTimeout(() => {
-        alert(`✅ Paiement réussi pour le plan ${selectedPlan} (${selectedPrice}€/mois)!\n\nVous recevrez un email de confirmation.`);
-        
-        // Réinitialiser
-        payButton.innerHTML = originalText;
-        payButton.disabled = false;
-        closePaymentModal();
-        
-        // Réinitialiser le formulaire
-        document.getElementById('paymentForm').reset();
-    }, 2000);
+// Fonction pour le smooth scroll
+function smoothScrollTo(elementId) {
+    const element = document.getElementById(elementId);
+    if (element) {
+        element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
 }
+
+// Fonction pour ajouter des effets de parallaxe
+function addParallaxEffect() {
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.hero');
+        
+        parallaxElements.forEach(element => {
+            const speed = 0.5;
+            element.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+    });
+}
+
+// Fonction pour initialiser les compteurs animés
+function initializeCounters() {
+    const counters = document.querySelectorAll('.counter');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+                
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Math.floor(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                
+                updateCounter();
+                observer.unobserve(counter);
+            }
+        });
+    });
+    
+    counters.forEach(counter => observer.observe(counter));
+}
+
+// Fonction pour gérer la navigation mobile
+function toggleMobileMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+}
+
+// Initialisation des fonctionnalités avancées
+document.addEventListener('DOMContentLoaded', function() {
+    // Ajouter l'effet de parallaxe
+    addParallaxEffect();
+    
+    // Initialiser les compteurs
+    initializeCounters();
+    
+    // Ajouter des styles CSS dynamiques pour les notifications
+    addDynamicStyles();
+});
+
+// Fonction pour ajouter des styles CSS dynamiques
+function addDynamicStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 3000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .notification-success {
+            border-left: 4px solid #27ae60;
+        }
+        
+        .notification-error {
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .notification-info {
+            border-left: 4px solid #3498db;
+        }
+        
+        .notification-content {
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .notification-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+        
+        .selection-notification {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            z-index: 3000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .selection-notification.show {
+            opacity: 1;
+        }
+        
+        .selection-content {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .animate-in {
+            animation: slideInUp 0.6s ease-out forwards;
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    `;
+    
+    document.head.appendChild(style);
+}
+
+// Export des fonctions pour utilisation externe
+window.WebResto = {
+    openOffersModal,
+    closeOffersModal,
+    selectPlan,
+    openPaymentModal,
+    closePaymentModal,
+    smoothScrollTo,
+    toggleMobileMenu
+};
 </script>
 </body>
 </html>

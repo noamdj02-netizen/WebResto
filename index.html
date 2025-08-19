@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebResto - Accueil</title>
+    <title>WebResto - Solutions Digitales pour Restaurants</title>
+    <meta name="description" content="Transformez votre restaurant avec nos solutions digitales : site web, application mobile, commandes en ligne et plus encore.">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header">
@@ -15,48 +19,299 @@
             <ul class="nav-links">
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#services">Services</a></li>
+                <li><a href="#tarifs">Tarifs</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </nav>
     </header>
 
     <main class="main">
-        <section class="hero">
+        <section id="accueil" class="hero">
             <div class="hero-content">
                 <h1>Votre Restaurant en Ligne</h1>
-                <p>Découvrez nos solutions digitales pour transformer votre restaurant</p>
-                <button class="cta-button" onclick="goToOffers()">
-                    Découvrir nos Offres
-                </button>
-                <button class="cta-button" onclick="openOffersModal()" style="margin-left: 1rem; background: #27ae60;">
-                    Voir les Tarifs
-                </button>
+                <p>Découvrez nos solutions digitales pour transformer votre restaurant et augmenter vos ventes</p>
+                <div class="hero-buttons">
+                    <button class="cta-button primary" onclick="openOffersModal()">
+                        🚀 Découvrir nos Offres
+                    </button>
+                    <button class="cta-button secondary" onclick="smoothScrollTo('services')">
+                        📱 Voir nos Services
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number counter" data-target="500">0</span>
+                        <span class="stat-label">Restaurants Satisfaits</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number counter" data-target="98">0</span>
+                        <span class="stat-label">% de Satisfaction</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number counter" data-target="24">0</span>
+                        <span class="stat-label">h Support</span>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="features">
+        <section id="services" class="features">
             <div class="container">
                 <h2>Pourquoi choisir WebResto ?</h2>
+                <p class="section-subtitle">Nous transformons votre restaurant en une machine à vendre digitale</p>
                 <div class="features-grid">
                     <div class="feature-card">
                         <div class="feature-icon">📱</div>
-                        <h3>Application Mobile</h3>
-                        <p>Une app native pour vos clients</p>
+                        <h3>Application Mobile Native</h3>
+                        <p>Une application mobile professionnelle pour iOS et Android, personnalisée aux couleurs de votre restaurant</p>
+                        <ul class="feature-details">
+                            <li>Design personnalisé</li>
+                            <li>Navigation intuitive</li>
+                            <li>Notifications push</li>
+                        </ul>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🛒</div>
                         <h3>Commande en Ligne</h3>
-                        <p>Système de commande intégré</p>
+                        <p>Système de commande intégré avec gestion des menus, prix et disponibilités en temps réel</p>
+                        <ul class="feature-details">
+                            <li>Menu dynamique</li>
+                            <li>Gestion des stocks</li>
+                            <li>Suivi des commandes</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💳</div>
+                        <h3>Paiement Sécurisé</h3>
+                        <p>Intégration de multiples moyens de paiement avec une sécurité de niveau bancaire</p>
+                        <ul class="feature-details">
+                            <li>Cartes bancaires</li>
+                            <li>Paiement mobile</li>
+                            <li>Cryptomonnaies</li>
+                        </ul>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">📊</div>
-                        <h3>Analytics</h3>
-                        <p>Suivez vos performances</p>
+                        <h3>Analytics Avancées</h3>
+                        <p>Tableaux de bord détaillés pour analyser vos performances et optimiser votre activité</p>
+                        <ul class="feature-details">
+                            <li>Ventes en temps réel</li>
+                            <li>Analyse des clients</li>
+                            <li>Prévisions intelligentes</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Marketing Automatisé</h3>
+                        <p>Campagnes marketing intelligentes pour fidéliser vos clients et attirer de nouveaux prospects</p>
+                        <ul class="feature-details">
+                            <li>Emails personnalisés</li>
+                            <li>Programmes de fidélité</li>
+                            <li>Réseaux sociaux</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔧</div>
+                        <h3>Support 24/7</h3>
+                        <p>Une équipe d'experts disponible 24h/24 et 7j/7 pour vous accompagner dans votre réussite</p>
+                        <ul class="feature-details">
+                            <li>Chat en direct</li>
+                            <li>Formation continue</li>
+                            <li>Maintenance proactive</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tarifs" class="pricing-section">
+            <div class="container">
+                <h2>Nos Offres WebResto</h2>
+                <p class="section-subtitle">Choisissez le plan qui correspond à vos besoins</p>
+                <div class="pricing-grid">
+                    <!-- Offre Starter -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Starter</h3>
+                            <div class="price">29€<span>/mois</span></div>
+                            <p class="price-description">Parfait pour débuter</p>
+                        </div>
+                        <ul class="features-list">
+                            <li>✅ Site web responsive</li>
+                            <li>✅ Menu digital interactif</li>
+                            <li>✅ Réservations en ligne</li>
+                            <li>✅ Gestion des tables</li>
+                            <li>✅ Support email</li>
+                            <li>❌ Application mobile</li>
+                            <li>❌ Commandes en ligne</li>
+                        </ul>
+                        <div class="availability available">✅ Disponible immédiatement</div>
+                        <button class="select-btn" onclick="selectPlan('Starter', 29)">Choisir ce Plan</button>
+                    </div>
+
+                    <!-- Offre Professional -->
+                    <div class="pricing-card featured">
+                        <div class="popular-badge">Populaire</div>
+                        <div class="pricing-header">
+                            <h3>Professional</h3>
+                            <div class="price">79€<span>/mois</span></div>
+                            <p class="price-description">Le choix des experts</p>
+                        </div>
+                        <ul class="features-list">
+                            <li>✅ Tout du plan Starter</li>
+                            <li>✅ Application mobile native</li>
+                            <li>✅ Commandes en ligne</li>
+                            <li>✅ Paiement intégré</li>
+                            <li>✅ Analytics de base</li>
+                            <li>✅ Support prioritaire</li>
+                            <li>✅ Formation initiale</li>
+                        </ul>
+                        <div class="availability limited">⚠️ 3 places restantes</div>
+                        <button class="select-btn" onclick="selectPlan('Professional', 79)">Choisir ce Plan</button>
+                    </div>
+
+                    <!-- Offre Enterprise -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Enterprise</h3>
+                            <div class="price">199€<span>/mois</span></div>
+                            <p class="price-description">Pour les chaînes</p>
+                        </div>
+                        <ul class="features-list">
+                            <li>✅ Tout du plan Professional</li>
+                            <li>✅ Multi-restaurants</li>
+                            <li>✅ Analytics avancées</li>
+                            <li>✅ Marketing automatisé</li>
+                            <li>✅ API personnalisée</li>
+                            <li>✅ Support 24/7 dédié</li>
+                            <li>✅ Gestionnaire de compte</li>
+                        </ul>
+                        <div class="availability available">✅ Sur demande</div>
+                        <button class="select-btn" onclick="selectPlan('Enterprise', 199)">Contacter l'équipe</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2>Prêt à transformer votre restaurant ?</h2>
+                <p class="section-subtitle">Contactez-nous pour une démonstration gratuite</p>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <div>
+                                <h4>Email</h4>
+                                <p>contact@webresto.fr</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📱</span>
+                            <div>
+                                <h4>Téléphone</h4>
+                                <p>+33 1 23 45 67 89</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">🏢</span>
+                            <div>
+                                <h4>Adresse</h4>
+                                <p>123 Rue de la Gastronomie<br>75001 Paris, France</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Demander une démo</h3>
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="demoName">Nom complet *</label>
+                                    <input type="text" id="demoName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="demoRestaurant">Nom du restaurant *</label>
+                                    <input type="text" id="demoRestaurant" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="demoEmail">Email *</label>
+                                    <input type="email" id="demoEmail" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="demoPhone">Téléphone *</label>
+                                    <input type="tel" id="demoPhone" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="demoMessage">Message</label>
+                                <textarea id="demoMessage" rows="4" placeholder="Décrivez vos besoins..."></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Demander une démo gratuite</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>🍽️ WebResto</h4>
+                    <p>Transformons ensemble votre restaurant en succès digital</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Produits</h4>
+                    <ul>
+                        <li><a href="#services">Application Mobile</a></li>
+                        <li><a href="#services">Commande en Ligne</a></li>
+                        <li><a href="#services">Site Web</a></li>
+                        <li><a href="#services">Analytics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Formation</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Entreprise</h4>
+                    <ul>
+                        <li><a href="#">À propos</a></li>
+                        <li><a href="#">Carrières</a></li>
+                        <li><a href="#">Presse</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WebResto. Tous droits réservés.</p>
+                <div class="footer-links">
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Politique de confidentialité</a>
+                    <a href="#">CGU</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- Modal des Offres -->
     <div id="offersModal" class="modal">
@@ -64,6 +319,7 @@
             <span class="close" onclick="closeOffersModal()">&times;</span>
             <div class="offers-content">
                 <h2>Nos Offres WebResto</h2>
+                <p class="modal-subtitle">Choisissez le plan qui correspond à vos besoins</p>
                 <div class="pricing-grid">
                     <!-- Offre Starter -->
                     <div class="pricing-card">
@@ -167,6 +423,7 @@
             </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
