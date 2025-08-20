@@ -170,132 +170,154 @@
     <script>
 // Navigation vers la page des offres
 function goToOffers() {
-    window.location.href = 'offers.html';
+	window.location.href = 'offers.html';
 }
 
 // Variables pour le système de paiement
 let selectedPlan = '';
 let selectedPrice = 0;
 
-// Ouvrir le modal des offres
+// Ouvrir/Fermer le modal des offres
 function openOffersModal() {
-    document.getElementById('offersModal').style.display = 'block';
-    document.body.style.overflow = 'hidden';
+	const modal = document.getElementById('offersModal');
+	if (!modal) return;
+	modal.style.display = 'block';
+	document.body.style.overflow = 'hidden';
 }
 
-// Fermer le modal des offres
 function closeOffersModal() {
-    document.getElementById('offersModal').style.display = 'none';
-    document.body.style.overflow = 'auto';
+	const modal = document.getElementById('offersModal');
+	if (!modal) return;
+	modal.style.display = 'none';
+	document.body.style.overflow = 'auto';
 }
 
-// Sélectionner un plan
+// Sélection d'un plan depuis cartes ou modal
 function selectPlan(planName, price) {
-    selectedPlan = planName;
-    selectedPrice = price;
-    
-    // Mettre à jour les informations dans le modal de paiement
-    document.getElementById('selectedPlanName').textContent = `Plan ${planName}`;
-    document.getElementById('selectedPlanPrice').textContent = `${price}€/mois`;
-    document.getElementById('payAmount').textContent = `${price}€`;
-    
-    // Fermer le modal des offres et ouvrir celui de paiement
-    closeOffersModal();
-    openPaymentModal();
+	selectedPlan = planName;
+	selectedPrice = price;
+
+	const planNameEl = document.getElementById('selectedPlanName');
+	const planPriceEl = document.getElementById('selectedPlanPrice');
+	const payAmountEl = document.getElementById('payAmount');
+
+	if (planNameEl) planNameEl.textContent = `Plan ${planName}`;
+	if (planPriceEl) planPriceEl.textContent = `${price}€/mois`;
+	if (payAmountEl) payAmountEl.textContent = `${price}€`;
+
+	closeOffersModal();
+	openPaymentModal();
 }
 
-// Ouvrir le modal de paiement
+// Ouvrir/Fermer le modal de paiement
 function openPaymentModal() {
-    document.getElementById('paymentModal').style.display = 'block';
-    document.body.style.overflow = 'hidden';
+	const modal = document.getElementById('paymentModal');
+	if (!modal) return;
+	modal.style.display = 'block';
+	document.body.style.overflow = 'hidden';
 }
 
-// Fermer le modal de paiement
 function closePaymentModal() {
-    document.getElementById('paymentModal').style.display = 'none';
-    document.body.style.overflow = 'auto';
+	const modal = document.getElementById('paymentModal');
+	if (!modal) return;
+	modal.style.display = 'none';
+	document.body.style.overflow = 'auto';
 }
 
 // Fermer les modals en cliquant à l'extérieur
-window.onclick = function(event) {
-    const offersModal = document.getElementById('offersModal');
-    const paymentModal = document.getElementById('paymentModal');
-    
-    if (event.target === offersModal) {
-        closeOffersModal();
-    }
-    if (event.target === paymentModal) {
-        closePaymentModal();
-    }
-}
-
-// Gestion du formulaire de paiement
-document.addEventListener('DOMContentLoaded', function() {
-    const paymentForm = document.getElementById('paymentForm');
-    
-    if (paymentForm) {
-        paymentForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            processPayment();
-        });
-    }
-    
-    // Formatage automatique des champs de carte
-    setupCardFormatting();
+window.addEventListener('click', (event) => {
+	const offersModal = document.getElementById('offersModal');
+	const paymentModal = document.getElementById('paymentModal');
+	if (event.target === offersModal) {
+		closeOffersModal();
+	}
+	if (event.target === paymentModal) {
+		closePaymentModal();
+	}
 });
 
+// Setup au chargement du DOM
 function setupCardFormatting() {
-    const cardNumber = document.getElementById('cardNumber');
-    const expiryDate = document.getElementById('expiryDate');
-    const cvv = document.getElementById('cvv');
-    
-    if (cardNumber) {
-        cardNumber.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
-            let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
-            if (formattedValue.length > 19) formattedValue = formattedValue.substr(0, 19);
-            e.target.value = formattedValue;
-        });
-    }
-    
-    if (expiryDate) {
-        expiryDate.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length >= 2) {
-                value = value.substring(0, 2) + '/' + value.substring(2, 4);
-            }
-            e.target.value = value;
-        });
-    }
-    
-    if (cvv) {
-        cvv.addEventListener('input', function(e) {
-            e.target.value = e.target.value.replace(/[^0-9]/g, '').substring(0, 3);
-        });
-    }
+	const cardNumber = document.getElementById('cardNumber');
+	const expiryDate = document.getElementById('expiryDate');
+	const cvv = document.getElementById('cvv');
+
+	if (cardNumber) {
+		cardNumber.addEventListener('input', (e) => {
+			let value = e.target.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
+			let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+			if (formattedValue.length > 19) formattedValue = formattedValue.substr(0, 19);
+			e.target.value = formattedValue;
+		});
+	}
+
+	if (expiryDate) {
+		expiryDate.addEventListener('input', (e) => {
+			let value = e.target.value.replace(/\D/g, '');
+			if (value.length >= 2) {
+				value = value.substring(0, 2) + '/' + value.substring(2, 4);
+			}
+			e.target.value = value;
+		});
+	}
+
+	if (cvv) {
+		cvv.addEventListener('input', (e) => {
+			e.target.value = e.target.value.replace(/[^0-9]/g, '').substring(0, 3);
+		});
+	}
 }
 
 function processPayment() {
-    const payButton = document.querySelector('.pay-button');
-    const originalText = payButton.innerHTML;
-    
-    // Animation de chargement
-    payButton.innerHTML = '🔄 Traitement...';
-    payButton.disabled = true;
-    
-    // Simulation du paiement
-    setTimeout(() => {
-        alert(`✅ Paiement réussi pour le plan ${selectedPlan} (${selectedPrice}€/mois)!\n\nVous recevrez un email de confirmation.`);
-        
-        // Réinitialiser
-        payButton.innerHTML = originalText;
-        payButton.disabled = false;
-        closePaymentModal();
-        
-        // Réinitialiser le formulaire
-        document.getElementById('paymentForm').reset();
-    }, 2000);
+	const payButton = document.querySelector('.pay-button');
+	if (!payButton) return;
+	const originalHTML = payButton.innerHTML;
+
+	payButton.innerHTML = '🔄 Traitement...';
+	payButton.disabled = true;
+
+	setTimeout(() => {
+		alert(`✅ Paiement réussi pour le plan ${selectedPlan} (${selectedPrice}€/mois)!\n\nVous recevrez un email de confirmation.`);
+		payButton.innerHTML = originalHTML;
+		payButton.disabled = false;
+		closePaymentModal();
+		const paymentForm = document.getElementById('paymentForm');
+		if (paymentForm) paymentForm.reset();
+	}, 1500);
 }
+
+function setupPaymentFormHandler() {
+	const paymentForm = document.getElementById('paymentForm');
+	if (!paymentForm) return;
+	paymentForm.addEventListener('submit', (e) => {
+		e.preventDefault();
+		processPayment();
+	});
+}
+
+// Offers page: toggle payment method
+function setupPaymentMethodToggle() {
+	const methods = document.querySelectorAll('.payment-method');
+	if (!methods.length) return;
+	methods.forEach((el) => {
+		el.addEventListener('click', () => {
+			methods.forEach((m) => m.classList.remove('active'));
+			el.classList.add('active');
+			const method = el.getAttribute('data-method');
+			const cardSection = document.getElementById('cardPayment');
+			if (cardSection) {
+				cardSection.style.display = method === 'card' ? 'block' : 'none';
+			}
+		});
+	});
+}
+
+// DOM ready
+window.addEventListener('DOMContentLoaded', () => {
+	setupCardFormatting();
+	setupPaymentFormHandler();
+	setupPaymentMethodToggle();
+});
 </script>
 </body>
 </html>
